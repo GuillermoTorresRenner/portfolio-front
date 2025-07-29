@@ -1,13 +1,18 @@
+import { Link } from "react-router";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "Portfolio Guillermo torres Renner" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-center">Index de mi página</h1>
+      <Link to="/proyectos">Ver Proyectos</Link>
+    </div>
+  );
 }
