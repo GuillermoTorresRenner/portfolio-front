@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 html,
@@ -12,4 +13,298 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+/* ====== DEGRADADOS PERSONALIZADOS ====== */
+
+/* Degradados para texto (con bg-clip-text) */
+.gradient-text-primary {
+  background: linear-gradient(to right, #60a5fa, #a855f7, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-ocean {
+  background: linear-gradient(to right, #22d3ee, #3b82f6, #4f46e5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-sunset {
+  background: linear-gradient(to right, #fb923c, #ef4444, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-nature {
+  background: linear-gradient(to right, #4ade80, #10b981, #0d9488);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-cosmic {
+  background: linear-gradient(to right, #a78bfa, #8b5cf6, #4f46e5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-fire {
+  background: linear-gradient(to right, #facc15, #f97316, #dc2626);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-neon {
+  background: linear-gradient(to right, #06ffa5, #00d4ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.gradient-text-neon-vertical {
+  background: linear-gradient(to top, #06ffa5, #00d4ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Degradados para backgrounds de botones y elementos */
+.gradient-bg-primary {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+}
+
+.gradient-bg-primary:hover {
+  background: linear-gradient(to right, #2563eb, #7c3aed);
+}
+
+.gradient-bg-ocean {
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+}
+
+.gradient-bg-ocean:hover {
+  background: linear-gradient(to right, #0891b2, #2563eb);
+}
+
+.gradient-bg-sunset {
+  background: linear-gradient(to right, #f97316, #dc2626);
+}
+
+.gradient-bg-sunset:hover {
+  background: linear-gradient(to right, #ea580c, #b91c1c);
+}
+
+.gradient-bg-nature {
+  background: linear-gradient(to right, #22c55e, #10b981);
+}
+
+.gradient-bg-nature:hover {
+  background: linear-gradient(to right, #16a34a, #059669);
+}
+
+.gradient-bg-cosmic {
+  background: linear-gradient(to right, #8b5cf6, #4f46e5);
+}
+
+.gradient-bg-cosmic:hover {
+  background: linear-gradient(to right, #7c3aed, #4338ca);
+}
+
+.gradient-bg-fire {
+  background: linear-gradient(to right, #eab308, #f97316);
+}
+
+.gradient-bg-fire:hover {
+  background: linear-gradient(to right, #ca8a04, #ea580c);
+}
+
+.gradient-bg-neon {
+  background: linear-gradient(to right, #06ffa5, #00d4ff);
+}
+
+.gradient-bg-neon:hover {
+  background: linear-gradient(to right, #04e58a, #00bcd4);
+}
+
+/* Degradados diagonales especiales */
+.gradient-bg-diagonal-primary {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+}
+
+.gradient-bg-diagonal-cosmic {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+}
+
+.gradient-bg-diagonal-aurora {
+  background: linear-gradient(135deg, #06ffa5, #00d4ff, #8b5cf6, #ec4899);
+}
+
+/* Degradados radiales */
+.gradient-bg-radial-primary {
+  background: radial-gradient(circle, #3b82f6, #8b5cf6, #ec4899);
+}
+
+.gradient-bg-radial-cosmic {
+  background: radial-gradient(circle, #6366f1, #8b5cf6, #a855f7);
+}
+
+/* Degradados con múltiples paradas */
+.gradient-bg-rainbow {
+  background: linear-gradient(
+    to right,
+    #ef4444,
+    #f97316,
+    #eab308,
+    #22c55e,
+    #06b6d4,
+    #3b82f6,
+    #8b5cf6
+  );
+}
+
+.gradient-bg-pastel {
+  background: linear-gradient(to right, #fbbf24, #f472b6, #a78bfa, #60a5fa);
+}
+
+/* Efectos especiales con degradados */
+.glass-gradient {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+
+.glass-gradient:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Animaciones de degradados */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animated {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.gradient-animated-fast {
+  background-size: 200% 200%;
+  animation: gradient-shift 1.5s ease infinite;
+}
+
+.gradient-animated-slow {
+  background-size: 300% 300%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Clases combinadas para facilitar el uso */
+.btn-gradient-primary {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+.btn-gradient-primary:hover {
+  background: linear-gradient(to right, #2563eb, #7c3aed);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.btn-gradient-ocean {
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-gradient-ocean:hover {
+  background: linear-gradient(to right, #0891b2, #2563eb);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.btn-gradient-sunset {
+  background: linear-gradient(to right, #f97316, #dc2626);
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-gradient-sunset:hover {
+  background: linear-gradient(to right, #ea580c, #b91c1c);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.btn-gradient-nature {
+  background: linear-gradient(to right, #22c55e, #10b981);
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-gradient-nature:hover {
+  background: linear-gradient(to right, #16a34a, #059669);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.btn-gradient-neon {
+  background: linear-gradient(to right, #06ffa5, #00d4ff);
+  padding: 1rem 2rem;
+  color: #1f2937;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(6, 255, 165, 0.3);
+}
+
+.btn-gradient-neon:hover {
+  background: linear-gradient(to right, #04e58a, #00bcd4);
+  box-shadow: 0 20px 25px -5px rgba(6, 255, 165, 0.4);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Tarjetas con degradados */
+.card-gradient {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card-gradient:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px) scale(1.02);
 }
