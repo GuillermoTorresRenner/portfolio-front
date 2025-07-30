@@ -4,6 +4,25 @@ import Aside from "~/components/Aside";
 import AboutMe from "~/components/AboutMe";
 import Experience from "~/components/Experience";
 import Projects from "~/components/Projects";
+import { useEffect, useState } from "react";
+import { getHomeData } from "~/api/home";
+import Techs from "~/components/Techs";
+
+// Interfaces definidas fuera del componente
+interface Technology {
+  id: number;
+  name: string;
+  url?: string;
+  icon?: string;
+}
+
+interface HomeData {
+  name: string;
+  subtitle: string;
+  description: string;
+  about: string;
+  technologies: Technology[];
+}
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,16 +35,36 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const [homeData, setHomeData] = useState<HomeData | null>(null);
+
+  const getAllData = async () => {
+    const data = await getHomeData();
+    console.log(data);
+    setHomeData(data);
+  };
+
+  useEffect(() => {
+    getAllData();
+  }, []);
+
   return (
     <div className="min-h-screen relative">
       {/* Aside fijo en la izquierda */}
-      <Aside />
+      <Aside
+        name={homeData?.name}
+        subtitle={homeData?.subtitle}
+        description={homeData?.description}
+      />
 
       {/* Contenido principal con margen para el aside */}
       <main className="ml-[40%] relative z-10">
         <div className="container mx-auto px-8">
           {/* Sección Sobre mí */}
-          <AboutMe />
+          <AboutMe
+            about={homeData?.about}
+            technologies={homeData?.technologies}
+          />
+          <Techs technologies={homeData?.technologies ?? []} />
 
           {/* Sección Experiencia */}
           <Experience />
