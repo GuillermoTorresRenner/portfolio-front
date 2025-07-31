@@ -1,4 +1,75 @@
+# React Router específico
 .react-router
 build
+
+# Dependencias
 node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+
+# IDEs y editores
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Archivos del sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+.dockerignore
+docker-compose.yml
+docker-compose.yaml
+
+# Documentación
 README.md
+CHANGELOG.md
+LICENSE
+
+# Testing
+*.test.js
+*.spec.js
+__tests__
+test
+coverage
+.nyc_output
+
+# Cache
+.cache
+.parcel-cache
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Archivos temporales
+*.tmp
+*.temp
+*.pid
+*.seed
+*.pid.lock
