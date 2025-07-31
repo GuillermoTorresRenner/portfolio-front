@@ -1,34 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import type { Route } from "./+types/projects";
-import { useLoaderData } from "react-router";
 import CardProjects from "~/components/CardProjects";
-import { getProjectsData } from "~/api/proyects";
-
-interface Technology {
-  id: number;
-  name: string;
-  url?: string;
-}
-
-interface Project {
-  id: number;
-  documentId: string;
-  title: string;
-  exerpt: string;
-  description: string;
-  slug: string;
-  demo_url?: string;
-  code_url?: string;
-  order: number;
-  is_main: boolean;
-  technologies: Technology[];
-  images?: any[];
-}
-
-export async function loader({}: Route.LoaderArgs) {
-  const projects = await getProjectsData();
-  return { projects };
-}
+import { getProjectData } from "~/api/project";
+import type { ProjectItem } from "~/types";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -37,8 +11,36 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Proyectos() {
-  const { projects } = useLoaderData<typeof loader>();
+export default function Projects() {
+  const [projects, setProjects] = useState<ProjectItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const getAllProjects = async () => {
+    try {
+      const data = await getProjectData();
+      setProjects(data || []);
+    } catch (error) {
+      console.error("Error loading projects:", error);
+      setProjects([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getAllProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
+          <p className="text-xl text-gray-300">Loading projects...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -56,16 +58,14 @@ export default function Proyectos() {
           </div>
 
           {/* Projects */}
-          <div className="space-y-16">
+          <div className="space-y-12 max-w-4xl mx-auto">
             {projects && projects.length > 0 ? (
-              projects.map((project: Project) => (
-                <div key={project.documentId} className="max-w-4xl mx-auto">
-                  <CardProjects
-                    project={project}
-                    textGradient="gradient-text-neon"
-                    timelineGradient="gradient-bg-neon"
-                  />
-                </div>
+              projects.map((project: ProjectItem) => (
+                <CardProjects
+                  key={project.documentId}
+                  project={project}
+                  textGradient="gradient-text-neon"
+                />
               ))
             ) : (
               <div className="text-center py-16">

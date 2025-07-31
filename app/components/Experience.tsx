@@ -1,26 +1,6 @@
-import RichText from "./RichText";
+import React from "react";
 import CardExperience from "./CardExperience";
-
-interface Technology {
-  id: number;
-  name: string;
-  url?: string;
-  icon?: string;
-}
-
-interface ExperienceItem {
-  id: number;
-  documentId: string;
-  position: string;
-  company: string;
-  start_date: string;
-  end_date: string;
-  description: string;
-  url?: string;
-  slug: string;
-  order: number;
-  technologies?: Technology[];
-}
+import type { ExperienceItem } from "~/types";
 
 interface ExperienceProps {
   experiences?: ExperienceItem[];

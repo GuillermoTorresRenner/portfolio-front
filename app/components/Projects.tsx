@@ -1,40 +1,7 @@
 import React from "react";
 import CardProjects from "./CardProjects";
 import { Link } from "react-router";
-
-interface Technology {
-  id: number;
-  name: string;
-  url?: string;
-}
-
-interface ProjectImage {
-  id: number;
-  url: string;
-  alternativeText?: string;
-  formats?: {
-    small?: { url: string };
-    medium?: { url: string };
-    large?: { url: string };
-    thumbnail?: { url: string };
-  };
-}
-
-interface ProjectItem {
-  id: number;
-  documentId: string;
-  title: string;
-  exerpt: string;
-  description: string;
-  slug: string;
-  code_url?: string;
-  demo_url?: string;
-  youtube_url?: string;
-  order: number;
-  is_main: boolean;
-  technologies?: Technology[];
-  image?: ProjectImage[];
-}
+import type { ProjectItem } from "~/types";
 
 interface ProjectsProps {
   projects?: ProjectItem[];
@@ -49,7 +16,7 @@ const Projects = ({ projects }: ProjectsProps) => {
   const hasMainProjects = mainProjects.length > 0;
 
   return (
-    <section id="projects" className="min-h-screen flex items-center py-20">
+    <section id="proyectos" className="min-h-screen flex items-center py-20">
       <div className="max-w-4xl">
         <h2 className="text-4xl font-bold mb-12 gradient-text-neon">
           Proyectos Destacados
@@ -58,12 +25,11 @@ const Projects = ({ projects }: ProjectsProps) => {
         {hasMainProjects ? (
           <>
             <div className="space-y-12">
-              {mainProjects.map((project, index) => (
+              {mainProjects.map((project) => (
                 <CardProjects
                   key={project.documentId}
                   project={project}
                   textGradient="gradient-text-neon"
-                  timelineGradient="gradient-bg-neon"
                 />
               ))}
             </div>

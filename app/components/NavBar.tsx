@@ -16,7 +16,7 @@ const NavBar = ({ activeSection = "sobre-mi" }: NavBarProps) => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100; // Offset para mejor detección
+      const scrollPosition = window.scrollY + window.innerHeight / 3; // Mejor offset para detección
 
       let current = navItems[0].id;
 
@@ -25,6 +25,7 @@ const NavBar = ({ activeSection = "sobre-mi" }: NavBarProps) => {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.offsetHeight;
 
+          // Detectar si estamos en la sección actual
           if (
             scrollPosition >= sectionTop &&
             scrollPosition < sectionTop + sectionHeight
@@ -33,6 +34,14 @@ const NavBar = ({ activeSection = "sobre-mi" }: NavBarProps) => {
           }
         }
       });
+
+      // Si estamos cerca del final de la página, activar la última sección
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 100
+      ) {
+        current = navItems[navItems.length - 1].id;
+      }
 
       setCurrentSection(current);
     };

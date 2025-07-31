@@ -1,11 +1,5 @@
 import React from "react";
-
-interface Technology {
-  id: number;
-  name: string;
-  url?: string;
-  icon?: string;
-}
+import type { Technology } from "~/types";
 
 interface TechChipsProps {
   technologies: Technology[];

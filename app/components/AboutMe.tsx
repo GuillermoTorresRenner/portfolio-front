@@ -1,11 +1,6 @@
+import React from "react";
 import RichText from "./RichText";
-
-interface Technology {
-  id: number;
-  name: string;
-  url?: string;
-  icon?: string;
-}
+import type { Technology } from "~/types";
 
 interface AboutMeProps {
   about?: string;

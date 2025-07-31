@@ -1,14 +1,5 @@
 import React from "react";
-
-interface Social {
-  id: number;
-  name: string;
-  url: string;
-}
-
-interface SocialsProps {
-  socials: Social[];
-}
+import type { Social, SocialsProps } from "~/types";
 
 const Socials: React.FC<SocialsProps> = ({ socials }) => {
   // Mapeo de iconos SVG para diferentes redes sociales

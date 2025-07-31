@@ -7,53 +7,7 @@ import Projects from "~/components/Projects";
 import { useEffect, useState } from "react";
 import { getHomeData } from "~/api/home";
 import Techs from "~/components/Techs";
-
-// Interfaces definidas fuera del componente
-interface Technology {
-  id: number;
-  name: string;
-  url?: string;
-  icon?: string;
-}
-
-interface ExperienceItem {
-  id: number;
-  documentId: string;
-  position: string;
-  company: string;
-  start_date: string;
-  end_date: string;
-  description: string;
-  url?: string;
-  slug: string;
-  order: number;
-}
-
-interface ProjectItem {
-  id: number;
-  documentId: string;
-  title: string;
-  exerpt: string;
-  description: string;
-  slug: string;
-  code_url?: string;
-  demo_url?: string;
-  youtube_url?: string;
-  order: number;
-  is_main: boolean;
-  technologies?: Technology[];
-  image?: any[];
-}
-
-interface HomeData {
-  name: string;
-  subtitle: string;
-  description: string;
-  about: string;
-  technologies: Technology[];
-  experiences?: ExperienceItem[];
-  projects?: ProjectItem[];
-}
+import type { HomeData } from "~/types";
 
 export function meta({}: Route.MetaArgs) {
   return [

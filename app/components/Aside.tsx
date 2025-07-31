@@ -1,26 +1,9 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Socials from "./Socials";
+import type { AsideProps } from "~/types";
 
-interface Social {
-  id: number;
-  name: string;
-  url: string;
-}
-
-interface AsideProps {
-  name: string | undefined;
-  subtitle: string | undefined;
-  description: string | undefined;
-  socials?: Social[];
-}
-
-const Aside: React.FC<AsideProps> = ({
-  name,
-  subtitle,
-  description,
-  socials,
-}) => {
+const Aside = ({ name, subtitle, description, socials }: AsideProps) => {
   return (
     <aside className="w-full lg:w-full h-auto lg:h-screen p-4 sm:p-6 lg:p-0">
       <div className="text-center lg:text-left">
