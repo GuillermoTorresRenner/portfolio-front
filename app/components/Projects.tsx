@@ -1,83 +1,120 @@
+import React from "react";
+import CardProjects from "./CardProjects";
 import { Link } from "react-router";
 
-const Projects = () => {
-  const projects = [
-    {
-      title: "E-commerce Platform",
-      description:
-        "Plataforma completa de comercio electrónico con gestión de inventario, procesamiento de pagos y panel de administración.",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      gradient: "gradient-text-primary",
-      buttonGradient: "btn-gradient-primary",
-    },
-    {
-      title: "Task Management App",
-      description:
-        "Aplicación de gestión de tareas con colaboración en tiempo real, notificaciones push y sincronización en la nube.",
-      technologies: ["Next.js", "Socket.io", "MongoDB", "Prisma"],
-      gradient: "gradient-text-nature",
-      buttonGradient: "btn-gradient-nature",
-    },
-    {
-      title: "Analytics Dashboard",
-      description:
-        "Dashboard de análisis con visualizaciones interactivas, reportes automatizados y integración con múltiples fuentes de datos.",
-      technologies: ["React", "D3.js", "Python", "FastAPI"],
-      gradient: "gradient-text-sunset",
-      buttonGradient: "btn-gradient-sunset",
-    },
-  ];
+interface Technology {
+  id: number;
+  name: string;
+  url?: string;
+}
+
+interface ProjectImage {
+  id: number;
+  url: string;
+  alternativeText?: string;
+  formats?: {
+    small?: { url: string };
+    medium?: { url: string };
+    large?: { url: string };
+    thumbnail?: { url: string };
+  };
+}
+
+interface ProjectItem {
+  id: number;
+  documentId: string;
+  title: string;
+  exerpt: string;
+  description: string;
+  slug: string;
+  code_url?: string;
+  demo_url?: string;
+  youtube_url?: string;
+  order: number;
+  is_main: boolean;
+  technologies?: Technology[];
+  image?: ProjectImage[];
+}
+
+interface ProjectsProps {
+  projects?: ProjectItem[];
+}
+
+const Projects = ({ projects }: ProjectsProps) => {
+  // Filtrar solo proyectos principales y ordenarlos
+  const mainProjects = (projects || [])
+    .filter((project) => project.is_main)
+    .sort((a, b) => a.order - b.order);
+
+  const hasMainProjects = mainProjects.length > 0;
 
   return (
-    <section id="proyectos" className="min-h-screen flex items-center py-20">
-      <div className="max-w-5xl">
-        <h2 className="text-4xl font-bold mb-12 gradient-text-fire">
+    <section id="projects" className="min-h-screen flex items-center py-20">
+      <div className="max-w-4xl">
+        <h2 className="text-4xl font-bold mb-12 gradient-text-neon">
           Proyectos Destacados
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {projects.map((project, index) => (
-            <div key={index} className="card-gradient group">
-              <h3 className={`text-2xl font-semibold mb-4 ${project.gradient}`}>
-                {project.title}
-              </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 bg-white/10 text-gray-300 rounded-full text-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex gap-3">
-                <button
-                  className={`flex-1 py-2 px-4 rounded-lg text-sm transition-all duration-300 ${project.buttonGradient}`}
-                >
-                  Ver Demo
-                </button>
-                <button className="py-2 px-4 border border-white/20 rounded-lg text-sm hover:border-white/40 hover:bg-white/5 transition-all duration-300">
-                  Código
-                </button>
-              </div>
+        {hasMainProjects ? (
+          <>
+            <div className="space-y-12">
+              {mainProjects.map((project, index) => (
+                <CardProjects
+                  key={project.documentId}
+                  project={project}
+                  textGradient="gradient-text-neon"
+                  timelineGradient="gradient-bg-neon"
+                />
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="text-center">
-          <Link
-            to="/proyectos"
-            className="btn-gradient-cosmic inline-flex items-center"
-          >
-            Ver todos los proyectos →
-          </Link>
-        </div>
+            {/* Link para ver todos los proyectos */}
+            <div className="text-center mt-8">
+              <Link to="/projects" className="btn-gradient-neon inline-block">
+                Ver todos los proyectos
+                <svg
+                  className="ml-2 h-4 w-4 inline"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <div className="flex items-center justify-center min-h-[300px]">
+            <div className="text-center">
+              <div className="mb-4">
+                <svg
+                  className="mx-auto h-16 w-16 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-300 mb-2">
+                Sin proyectos para mostrar
+              </h3>
+              <p className="text-gray-500 max-w-md">
+                No se encontraron proyectos destacados en este momento.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

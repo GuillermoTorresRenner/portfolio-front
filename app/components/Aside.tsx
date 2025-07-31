@@ -1,13 +1,26 @@
 import React from "react";
 import NavBar from "./NavBar";
+import Socials from "./Socials";
+
+interface Social {
+  id: number;
+  name: string;
+  url: string;
+}
 
 interface AsideProps {
   name: string | undefined;
   subtitle: string | undefined;
   description: string | undefined;
+  socials?: Social[];
 }
 
-const Aside: React.FC<AsideProps> = ({ name, subtitle, description }) => {
+const Aside: React.FC<AsideProps> = ({
+  name,
+  subtitle,
+  description,
+  socials,
+}) => {
   return (
     <aside className="w-full lg:w-full h-auto lg:h-screen p-4 sm:p-6 lg:p-0">
       <div className="text-center lg:text-left">
@@ -25,11 +38,13 @@ const Aside: React.FC<AsideProps> = ({ name, subtitle, description }) => {
       {/* NavBar - Oculto en móvil/tablet, visible en desktop */}
       <div className="hidden lg:block">
         <NavBar />
+        <Socials socials={socials || []} />
       </div>
 
       {/* NavBar móvil - Horizontal en la parte inferior en móvil/tablet */}
       <div className="lg:hidden mt-6">
         <NavBar />
+        <Socials socials={socials || []} />
       </div>
     </aside>
   );

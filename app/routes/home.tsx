@@ -29,6 +29,22 @@ interface ExperienceItem {
   order: number;
 }
 
+interface ProjectItem {
+  id: number;
+  documentId: string;
+  title: string;
+  exerpt: string;
+  description: string;
+  slug: string;
+  code_url?: string;
+  demo_url?: string;
+  youtube_url?: string;
+  order: number;
+  is_main: boolean;
+  technologies?: Technology[];
+  image?: any[];
+}
+
 interface HomeData {
   name: string;
   subtitle: string;
@@ -36,6 +52,7 @@ interface HomeData {
   about: string;
   technologies: Technology[];
   experiences?: ExperienceItem[];
+  projects?: ProjectItem[];
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -86,7 +103,7 @@ export default function Home() {
           <Experience experiences={homeData?.experiences} />
 
           {/* Sección Proyectos */}
-          <Projects />
+          <Projects projects={homeData?.projects} />
         </div>
       </main>
     </div>
