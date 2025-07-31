@@ -40,6 +40,7 @@ export default function Home() {
           name={homeData?.name}
           subtitle={homeData?.subtitle}
           description={homeData?.description}
+          socials={homeData?.socials}
         />
       </div>
 

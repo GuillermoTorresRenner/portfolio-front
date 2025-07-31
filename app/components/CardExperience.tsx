@@ -65,7 +65,7 @@ const CardExperience = ({
                 href={experience.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300 gradient-text-neon"
+                className="hover:text-white transition-colors duration-300 gradient-text-sunset"
                 onClick={(e) => e.stopPropagation()}
               >
                 {experience.company}

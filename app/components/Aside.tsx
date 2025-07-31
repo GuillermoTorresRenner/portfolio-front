@@ -20,8 +20,8 @@ const Aside = ({ name, subtitle, description, socials }: AsideProps) => {
 
       {/* NavBar - Oculto en móvil/tablet, visible en desktop */}
       <div className="hidden lg:block">
-        <NavBar />
         <Socials socials={socials || []} />
+        <NavBar />
       </div>
 
       {/* NavBar móvil - Horizontal en la parte inferior en móvil/tablet */}

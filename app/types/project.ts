@@ -1,3 +1,5 @@
+import type { Social } from "./components";
+
 export interface Technology {
   id: number;
   name: string;
@@ -76,4 +78,5 @@ export interface HomeData {
   technologies: Technology[];
   projects: ProjectItem[];
   experiences: ExperienceItem[];
+  socials: Social[];
 }
