@@ -1,12 +1,14 @@
 import React from "react";
 import CardExperience from "./CardExperience";
 import type { ExperienceItem } from "~/types";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 interface ExperienceProps {
   experiences?: ExperienceItem[];
 }
 
 const Experience = ({ experiences }: ExperienceProps) => {
+  const { currentLanguage } = useLanguage();
   // Verificar si hay datos de la API
   const hasApiData = experiences && experiences.length > 0;
 
@@ -14,7 +16,9 @@ const Experience = ({ experiences }: ExperienceProps) => {
     <section id="experiencia" className="min-h-screen flex items-center py-20">
       <div className="max-w-4xl">
         <h2 className="text-4xl font-bold mb-12 gradient-text-sunset">
-          Experiencia Profesional
+          {currentLanguage === "es"
+            ? "Experiencia Profesional"
+            : "Professional Experience"}
         </h2>
 
         {hasApiData ? (
@@ -51,11 +55,14 @@ const Experience = ({ experiences }: ExperienceProps) => {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-300 mb-2">
-                Sin datos para mostrar
+                {currentLanguage === "es"
+                  ? "Sin datos para mostrar"
+                  : "No data to display"}
               </h3>
               <p className="text-gray-500 max-w-md">
-                No se encontró información de experiencia profesional en este
-                momento.
+                {currentLanguage === "es"
+                  ? "No se encontró información de experiencia profesional en este momento."
+                  : "No professional experience information found at this time."}
               </p>
             </div>
           </div>

@@ -1,9 +1,9 @@
 import { api } from "./api";
 
-export const getHomeData = async () => {
+export const getHomeData = async (locale: string = "en") => {
   try {
     const res = await api.get(
-      "/home?populate[technologies]=true&populate[experiences][populate][technologies]=true&populate[projects][populate][technologies]=true&populate[socials]=true"
+      `/home?populate[technologies]=true&populate[experiences][populate][technologies]=true&populate[projects][populate][technologies]=true&populate[socials]=true&locale=${locale}`
     );
 
     const data = res.data.data;

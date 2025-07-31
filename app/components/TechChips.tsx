@@ -1,5 +1,6 @@
 import React from "react";
 import type { Technology } from "~/types";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 interface TechChipsProps {
   technologies: Technology[];
@@ -13,11 +14,16 @@ interface TechChipsProps {
 const TechChips: React.FC<TechChipsProps> = ({
   technologies,
   showTitle = false,
-  title = "Tecnologías",
+  title,
   size = "sm",
   gradientTitle = "gradient-text-nature",
   className = "",
 }) => {
+  const { currentLanguage } = useLanguage();
+
+  // Si no se proporciona un título personalizado, usar el título localizado
+  const displayTitle =
+    title || (currentLanguage === "es" ? "Tecnologías" : "Technologies");
   const sizeClasses = {
     sm: "px-3 py-1 text-xs",
     md: "px-4 py-2 text-sm",
@@ -40,7 +46,7 @@ const TechChips: React.FC<TechChipsProps> = ({
         <h3
           className={`${titleSizeClasses[size]} font-semibold mb-4 ${gradientTitle}`}
         >
-          {title}
+          {displayTitle}
         </h3>
       )}
       <div className="flex flex-wrap gap-2">

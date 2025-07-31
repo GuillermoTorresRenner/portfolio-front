@@ -1,5 +1,6 @@
 import RichText from "./RichText";
 import TechChips from "./TechChips";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 interface Technology {
   id: number;
@@ -33,6 +34,8 @@ const CardExperience = ({
   textGradient,
   timelineGradient,
 }: CardExperienceProps) => {
+  const { currentLanguage } = useLanguage();
+
   const handleCardClick = () => {
     if (experience.url) {
       window.open(experience.url, "_blank", "noopener,noreferrer");
@@ -99,7 +102,9 @@ const CardExperience = ({
         {experience.url && (
           <div className="flex items-center justify-end pt-2">
             <span className="text-xs text-gray-500 gradient-text-neon">
-              Click para visitar →
+              {currentLanguage === "es"
+                ? "Click para visitar →"
+                : "Click to visit →"}
             </span>
           </div>
         )}

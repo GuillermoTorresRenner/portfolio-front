@@ -1,16 +1,30 @@
 import { useEffect, useState } from "react";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 interface NavBarProps {
   activeSection?: string;
 }
 
 const NavBar = ({ activeSection = "sobre-mi" }: NavBarProps) => {
+  const { currentLanguage } = useLanguage();
   const [currentSection, setCurrentSection] = useState(activeSection);
 
   const navItems = [
-    { id: "sobre-mi", label: "Sobre mí", href: "#sobre-mi" },
-    { id: "experiencia", label: "Experiencia", href: "#experiencia" },
-    { id: "proyectos", label: "Proyectos", href: "#proyectos" },
+    {
+      id: "sobre-mi",
+      label: currentLanguage === "es" ? "Sobre mí" : "About me",
+      href: "#sobre-mi",
+    },
+    {
+      id: "experiencia",
+      label: currentLanguage === "es" ? "Experiencia" : "Experience",
+      href: "#experiencia",
+    },
+    {
+      id: "proyectos",
+      label: currentLanguage === "es" ? "Proyectos" : "Projects",
+      href: "#proyectos",
+    },
   ];
 
   useEffect(() => {
@@ -50,7 +64,7 @@ const NavBar = ({ activeSection = "sobre-mi" }: NavBarProps) => {
     handleScroll(); // Ejecutar una vez al montar
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [currentLanguage]);
 
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);

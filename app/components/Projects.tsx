@@ -2,12 +2,14 @@ import React from "react";
 import CardProjects from "./CardProjects";
 import { Link } from "react-router";
 import type { ProjectItem } from "~/types";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 interface ProjectsProps {
   projects?: ProjectItem[];
 }
 
 const Projects = ({ projects }: ProjectsProps) => {
+  const { currentLanguage } = useLanguage();
   // Filtrar solo proyectos principales y ordenarlos
   const mainProjects = (projects || [])
     .filter((project) => project.is_main)
@@ -19,7 +21,9 @@ const Projects = ({ projects }: ProjectsProps) => {
     <section id="proyectos" className="min-h-screen flex items-center py-20">
       <div className="max-w-4xl">
         <h2 className="text-4xl font-bold mb-12 gradient-text-neon">
-          Proyectos Destacados
+          {currentLanguage === "es"
+            ? "Proyectos Destacados"
+            : "Featured Projects"}
         </h2>
 
         {hasMainProjects ? (
@@ -37,7 +41,9 @@ const Projects = ({ projects }: ProjectsProps) => {
             {/* Link para ver todos los proyectos */}
             <div className="text-center mt-8">
               <Link to="/projects" className="btn-gradient-neon inline-block">
-                Ver todos los proyectos
+                {currentLanguage === "es"
+                  ? "Ver todos los proyectos"
+                  : "View all projects"}
                 <svg
                   className="ml-2 h-4 w-4 inline"
                   fill="none"
@@ -73,10 +79,14 @@ const Projects = ({ projects }: ProjectsProps) => {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-300 mb-2">
-                Sin proyectos para mostrar
+                {currentLanguage === "es"
+                  ? "Sin proyectos para mostrar"
+                  : "No projects to display"}
               </h3>
               <p className="text-gray-500 max-w-md">
-                No se encontraron proyectos destacados en este momento.
+                {currentLanguage === "es"
+                  ? "No se encontraron proyectos destacados en este momento."
+                  : "No featured projects found at this time."}
               </p>
             </div>
           </div>

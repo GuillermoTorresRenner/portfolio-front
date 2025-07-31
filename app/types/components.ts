@@ -6,6 +6,18 @@ export interface Social {
   color?: string;
 }
 
+// Language Selector Interface
+export interface Language {
+  code: string;
+  name: string;
+  flag: string;
+}
+
+export interface LanguageSelectorProps {
+  currentLanguage: string;
+  onLanguageChange: (language: string) => void;
+}
+
 // Component Props Interfaces
 export interface AsideProps {
   name: string | undefined;
