@@ -18,5 +18,11 @@ ENV VITE_BASE_API_URL=$VITE_BASE_API_URL
 # Build the application
 RUN npm run build
 
-# Expose port (you can configure your own server)
+# Install serve globally to serve static files
+RUN npm install -g serve
+
+# Expose port
 EXPOSE 3000
+
+# Start serving the built files
+CMD ["serve", "-s", "build/client", "-l", "3000"]

@@ -2,9 +2,9 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, develop]
   pull_request:
-    branches: [main, master]
+    branches: [main, master, develop]
 
 jobs:
   build-and-push:
@@ -41,8 +41,7 @@ jobs:
           push: true
           build-args: |
             VITE_BASE_API_URL=${{ secrets.PRODUCTION_API_URL || 'http://localhost:1337/api' }}
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:${{ github.sha }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
