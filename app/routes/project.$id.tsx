@@ -33,6 +33,7 @@ export default function ProjectDetail() {
         setError("Project not found");
       } else {
         setProject(data);
+        console.log(data);
       }
     } catch (err) {
       console.error("Error loading project:", err);
@@ -76,7 +77,7 @@ export default function ProjectDetail() {
   }
 
   // Función para obtener la URL de la imagen
-  const getImageUrl = (image: ProjectImage) => {
+  const getImageUrl = (image: any) => {
     const baseUrl = "http://localhost:1337";
 
     // Priorizar formatos disponibles: large > medium > small > original
@@ -116,13 +117,13 @@ export default function ProjectDetail() {
             </div>
 
             {/* Imagen principal destacada */}
-            {project.images && project.images.length > 0 && (
+            {project.image && project.image.length > 0 && (
               <div className="relative mb-8">
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                   <img
-                    src={getImageUrl(project.images[0])}
+                    src={getImageUrl(project.image[0])}
                     alt={
-                      project.images[0].alternativeText ||
+                      project.image[0].alternativeText ||
                       `${project.title} - Principal`
                     }
                     className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
@@ -141,45 +142,6 @@ export default function ProjectDetail() {
                 </div>
               </div>
             )}
-
-            {/* Enlaces de acción principales */}
-            <div className="flex gap-4 flex-wrap justify-center mb-12">
-              {project.demo_url && (
-                <a
-                  href={project.demo_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gradient-neon flex items-center gap-2 text-lg px-8 py-3"
-                >
-                  <HiExternalLink className="w-6 h-6" />
-                  Ver Demo
-                </a>
-              )}
-
-              {project.code_url && (
-                <a
-                  href={project.code_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gradient-secondary flex items-center gap-2 text-lg px-8 py-3"
-                >
-                  <HiCode className="w-6 h-6" />
-                  Ver Código
-                </a>
-              )}
-
-              {project.youtube_url && (
-                <a
-                  href={project.youtube_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gradient-accent flex items-center gap-2 text-lg px-8 py-3"
-                >
-                  <HiPlay className="w-6 h-6" />
-                  Ver Video
-                </a>
-              )}
-            </div>
           </div>
 
           {/* Sección de contenido principal */}
@@ -196,7 +158,7 @@ export default function ProjectDetail() {
               </div>
 
               {/* Imagen destacada del proyecto */}
-              {project.images && project.images.length > 1 && (
+              {project.image && project.image.length > 1 && (
                 <div className="mt-8">
                   <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
                     <h3 className="text-xl font-bold mb-4 gradient-text-neon">
@@ -204,9 +166,9 @@ export default function ProjectDetail() {
                     </h3>
                     <div className="relative overflow-hidden rounded-xl">
                       <img
-                        src={getImageUrl(project.images[1])}
+                        src={getImageUrl(project.image[1])}
                         alt={
-                          project.images[1].alternativeText ||
+                          project.image[1].alternativeText ||
                           `${project.title} - Captura destacada`
                         }
                         className="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500"
@@ -221,16 +183,16 @@ export default function ProjectDetail() {
             {/* Sidebar con información adicional */}
             <div className="space-y-6">
               {/* Imagen asiada del proyecto */}
-              {project.images && project.images.length > 2 && (
+              {project.image && project.image.length > 2 && (
                 <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
                   <h3 className="text-xl font-bold mb-4 gradient-text-neon">
                     Vista Adicional
                   </h3>
                   <div className="relative overflow-hidden rounded-xl">
                     <img
-                      src={getImageUrl(project.images[2])}
+                      src={getImageUrl(project.image[2])}
                       alt={
-                        project.images[2].alternativeText ||
+                        project.image[2].alternativeText ||
                         `${project.title} - Vista adicional`
                       }
                       className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
@@ -253,34 +215,88 @@ export default function ProjectDetail() {
                   />
                 </div>
               )}
+
+              {/* Sección de Enlaces */}
+              <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+                <h3 className="text-xl font-bold mb-4 gradient-text-neon">
+                  Enlaces
+                </h3>
+                <div className="flex flex-col gap-3">
+                  {project.demo_url && (
+                    <a
+                      href={project.demo_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 hover:scale-105"
+                    >
+                      <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/30 transition-all duration-300">
+                        <HiExternalLink className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="text-gray-300 group-hover:text-cyan-300 transition-colors duration-300 font-medium">
+                        Sitio Web
+                      </span>
+                    </a>
+                  )}
+
+                  {project.code_url && (
+                    <a
+                      href={project.code_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 hover:scale-105"
+                    >
+                      <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-purple-500/30 transition-all duration-300">
+                        <HiCode className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="text-gray-300 group-hover:text-purple-300 transition-colors duration-300 font-medium">
+                        GitHub
+                      </span>
+                    </a>
+                  )}
+
+                  {project.youtube_url && (
+                    <a
+                      href={project.youtube_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 hover:scale-105"
+                    >
+                      <div className="w-10 h-10 bg-gradient-to-r from-red-400 to-red-600 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-red-500/30 transition-all duration-300">
+                        <HiPlay className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="text-gray-300 group-hover:text-red-300 transition-colors duration-300 font-medium">
+                        YouTube
+                      </span>
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Galería de imágenes adicionales */}
-          {project.images && project.images.length > 3 && (
+          {project.image && project.image.length > 3 && (
             <div className="mb-16">
               <h2 className="text-3xl font-bold mb-8 text-center gradient-text-neon">
                 Galería del Proyecto
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {project.images
-                  .slice(3)
-                  .map((image: ProjectImage, index: number) => (
-                    <div
-                      key={image.id}
-                      className="relative group overflow-hidden rounded-xl"
-                    >
-                      <img
-                        src={getImageUrl(image)}
-                        alt={
-                          image.alternativeText ||
-                          `${project.title} - Image ${index + 4}`
-                        }
-                        className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                  ))}
+                {project.image.slice(3).map((image: any, index: number) => (
+                  <div
+                    key={image.id}
+                    className="relative group overflow-hidden rounded-xl"
+                  >
+                    <img
+                      src={getImageUrl(image)}
+                      alt={
+                        image.alternativeText ||
+                        `${project.title} - Image ${index + 4}`
+                      }
+                      className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
               </div>
             </div>
           )}

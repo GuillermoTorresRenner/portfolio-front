@@ -30,6 +30,7 @@ export interface Project {
   is_main: boolean;
   technologies?: Technology[];
   images?: ProjectImage[];
+  image?: any[]; // Para compatibilidad con la API actual
 }
 
 export interface ProjectItem {

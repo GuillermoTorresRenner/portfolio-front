@@ -7,7 +7,6 @@ interface TechsProps {
 }
 
 const Techs: React.FC<TechsProps> = ({ technologies }) => {
-  console.log(technologies);
   return (
     <div className="mt-12">
       <TechChips
