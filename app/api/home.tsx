@@ -2,7 +2,9 @@ import { api } from "./api";
 
 export const getHomeData = async () => {
   try {
-    const res = await api.get("/home?populate=*");
+    const res = await api.get(
+      "/home?populate[0]=experiences&populate[1]=experiences.technologies"
+    );
     console.log(res.data.data);
 
     const data = res.data.data;

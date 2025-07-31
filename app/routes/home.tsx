@@ -63,16 +63,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative">
-      {/* Aside fijo en la izquierda */}
-      <Aside
-        name={homeData?.name}
-        subtitle={homeData?.subtitle}
-        description={homeData?.description}
-      />
+      {/* Aside - Responsivo: arriba en móvil/tablet, lateral en desktop */}
+      <div className="lg:fixed lg:top-20 lg:left-20 lg:w-2/6 lg:h-screen w-full">
+        <Aside
+          name={homeData?.name}
+          subtitle={homeData?.subtitle}
+          description={homeData?.description}
+        />
+      </div>
 
-      {/* Contenido principal con margen para el aside */}
-      <main className="ml-[40%] relative z-10">
-        <div className="container mx-auto px-8">
+      {/* Contenido principal - Responsivo: sin margen en móvil/tablet, con margen en desktop */}
+      <main className="lg:ml-[40%] relative z-10 mt-8 lg:mt-0">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Sección Sobre mí */}
           <AboutMe
             about={homeData?.about}

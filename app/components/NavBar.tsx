@@ -54,66 +54,123 @@ const NavBar = ({ activeSection = "sobre-mi" }: NavBarProps) => {
   };
 
   return (
-    <nav className="mt-12">
-      <ul className="space-y-6">
-        {navItems.map((item) => (
-          <li key={item.id} className="relative">
-            <button
-              onClick={() => handleNavClick(item.href)}
-              className={`
-                group flex items-center w-full text-left transition-all duration-300
-                ${
-                  currentSection === item.id
-                    ? "text-white"
-                    : "text-gray-400 hover:text-gray-200"
-                }
-              `}
-            >
-              {/* Línea indicadora */}
-              <div
+    <nav className="mt-6 lg:mt-12">
+      {/* Navegación vertical para desktop */}
+      <div className="hidden lg:block">
+        <ul className="space-y-6">
+          {navItems.map((item) => (
+            <li key={item.id} className="relative">
+              <button
+                onClick={() => handleNavClick(item.href)}
                 className={`
-                h-px mr-4 transition-all duration-500 ease-out
-                ${
-                  currentSection === item.id
-                    ? "w-12 gradient-bg-neon"
-                    : "w-6 bg-gray-600 group-hover:w-8 group-hover:bg-gray-400"
-                }
-              `}
-              />
-
-              {/* Texto del enlace */}
-              <span
-                className={`
-                text-sm font-medium tracking-wider uppercase transition-all duration-300
-                ${
-                  currentSection === item.id
-                    ? "gradient-text-neon-vertical transform translate-x-2"
-                    : "group-hover:transform group-hover:translate-x-1"
-                }
-              `}
+                  group flex items-center w-full text-left transition-all duration-300
+                  ${
+                    currentSection === item.id
+                      ? "text-white"
+                      : "text-gray-400 hover:text-gray-200"
+                  }
+                `}
               >
-                {item.label}
-              </span>
-            </button>
+                {/* Línea indicadora */}
+                <div
+                  className={`
+                  h-px mr-4 transition-all duration-500 ease-out
+                  ${
+                    currentSection === item.id
+                      ? "w-12 gradient-bg-neon"
+                      : "w-6 bg-gray-600 group-hover:w-8 group-hover:bg-gray-400"
+                  }
+                `}
+                />
 
-            {/* Efecto de partícula cuando está activo */}
-            {currentSection === item.id && (
-              <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
-                <div className="w-2 h-2 rounded-full gradient-bg-neon animate-pulse" />
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+                {/* Texto del enlace */}
+                <span
+                  className={`
+                  text-sm font-medium tracking-wider uppercase transition-all duration-300
+                  ${
+                    currentSection === item.id
+                      ? "gradient-text-neon-vertical transform translate-x-2"
+                      : "group-hover:transform group-hover:translate-x-1"
+                  }
+                `}
+                >
+                  {item.label}
+                </span>
+              </button>
 
-      {/* Línea vertical de progreso */}
-      <div className="absolute -left-8 top-0 h-full w-px bg-gradient-to-b from-transparent via-gray-600 to-transparent">
-        <div
-          className="w-full gradient-bg-neon transition-all duration-700 ease-out"
-          style={{
-            height: `${((navItems.findIndex((item) => item.id === currentSection) + 1) / navItems.length) * 100}%`,
-          }}
-        />
+              {/* Efecto de partícula cuando está activo */}
+              {currentSection === item.id && (
+                <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
+                  <div className="w-2 h-2 rounded-full gradient-bg-neon animate-pulse" />
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        {/* Línea vertical de progreso */}
+        <div className="absolute -left-8 top-0 h-full w-px bg-gradient-to-b from-transparent via-gray-600 to-transparent">
+          <div
+            className="w-full gradient-bg-neon transition-all duration-700 ease-out"
+            style={{
+              height: `${((navItems.findIndex((item) => item.id === currentSection) + 1) / navItems.length) * 100}%`,
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Navegación horizontal para móvil y tablet */}
+      <div className="lg:hidden">
+        <ul className="flex justify-center space-x-6 overflow-x-auto pb-2">
+          {navItems.map((item) => (
+            <li key={item.id} className="relative flex-shrink-0">
+              <button
+                onClick={() => handleNavClick(item.href)}
+                className={`
+                  group flex flex-col items-center transition-all duration-300 px-2 py-2
+                  ${
+                    currentSection === item.id
+                      ? "text-white"
+                      : "text-gray-400 hover:text-gray-200"
+                  }
+                `}
+              >
+                {/* Indicador superior para móvil */}
+                <div
+                  className={`
+                  w-full h-0.5 mb-2 transition-all duration-500 ease-out
+                  ${
+                    currentSection === item.id
+                      ? "gradient-bg-neon"
+                      : "bg-gray-600 group-hover:bg-gray-400"
+                  }
+                `}
+                />
+
+                {/* Texto del enlace */}
+                <span
+                  className={`
+                  text-xs font-medium tracking-wider uppercase transition-all duration-300 whitespace-nowrap
+                  ${
+                    currentSection === item.id
+                      ? "gradient-text-neon-vertical"
+                      : ""
+                  }
+                `}
+                >
+                  {item.label}
+                </span>
+
+                {/* Punto indicador cuando está activo */}
+                {currentSection === item.id && (
+                  <div className="mt-1">
+                    <div className="w-1.5 h-1.5 rounded-full gradient-bg-neon animate-pulse" />
+                  </div>
+                )}
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );

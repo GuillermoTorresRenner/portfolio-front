@@ -1,4 +1,12 @@
 import RichText from "./RichText";
+import TechChips from "./TechChips";
+
+interface Technology {
+  id: number;
+  name: string;
+  url?: string;
+  icon?: string;
+}
 
 interface ExperienceItem {
   id: number;
@@ -11,6 +19,7 @@ interface ExperienceItem {
   url?: string;
   slug: string;
   order: number;
+  technologies?: Technology[];
 }
 
 interface CardExperienceProps {
@@ -74,6 +83,17 @@ const CardExperience = ({
         <div className="text-gray-300 leading-relaxed">
           <RichText content={experience.description} />
         </div>
+
+        {/* Mostrar tecnologías si las hay */}
+        {experience.technologies && experience.technologies.length > 0 && (
+          <div className="pt-2">
+            <TechChips
+              technologies={experience.technologies}
+              size="sm"
+              className="mt-2"
+            />
+          </div>
+        )}
 
         {/* Indicador visual si tiene URL */}
         {experience.url && (

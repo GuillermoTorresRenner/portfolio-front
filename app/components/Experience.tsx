@@ -1,6 +1,13 @@
 import RichText from "./RichText";
 import CardExperience from "./CardExperience";
 
+interface Technology {
+  id: number;
+  name: string;
+  url?: string;
+  icon?: string;
+}
+
 interface ExperienceItem {
   id: number;
   documentId: string;
@@ -12,6 +19,7 @@ interface ExperienceItem {
   url?: string;
   slug: string;
   order: number;
+  technologies?: Technology[];
 }
 
 interface ExperienceProps {
