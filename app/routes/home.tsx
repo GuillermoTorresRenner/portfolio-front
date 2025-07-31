@@ -16,12 +16,26 @@ interface Technology {
   icon?: string;
 }
 
+interface ExperienceItem {
+  id: number;
+  documentId: string;
+  position: string;
+  company: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+  url?: string;
+  slug: string;
+  order: number;
+}
+
 interface HomeData {
   name: string;
   subtitle: string;
   description: string;
   about: string;
   technologies: Technology[];
+  experiences?: ExperienceItem[];
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -67,7 +81,7 @@ export default function Home() {
           <Techs technologies={homeData?.technologies ?? []} />
 
           {/* Sección Experiencia */}
-          <Experience />
+          <Experience experiences={homeData?.experiences} />
 
           {/* Sección Proyectos */}
           <Projects />

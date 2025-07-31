@@ -1,36 +1,47 @@
-const Experience = () => {
-  const experiences = [
-    {
-      company: "Tech Solutions Inc.",
-      position: "Senior Full Stack Developer",
-      period: "2023 - Presente",
-      description:
-        "Liderazgo de equipos de desarrollo, arquitectura de aplicaciones web escalables con React y Node.js, implementación de microservicios y optimización de performance.",
-      technologies: ["React", "Node.js", "TypeScript", "PostgreSQL", "AWS"],
-    },
-    {
-      company: "Digital Innovation Lab",
-      position: "Full Stack Developer",
-      period: "2021 - 2023",
-      description:
-        "Desarrollo de aplicaciones web modernas, integración de APIs RESTful, implementación de sistemas de autenticación y autorización, colaboración en metodologías ágiles.",
-      technologies: [
-        "React",
-        "Express.js",
-        "MongoDB",
-        "Next.js",
-        "Tailwind CSS",
-      ],
-    },
-    {
-      company: "StartUp Ventures",
-      position: "Frontend Developer",
-      period: "2020 - 2021",
-      description:
-        "Creación de interfaces de usuario responsivas, optimización de experiencia de usuario, implementación de diseños pixel-perfect y colaboración estrecha con equipos de diseño.",
-      technologies: ["React", "JavaScript", "CSS3", "HTML5", "Figma"],
-    },
+import RichText from "./RichText";
+import CardExperience from "./CardExperience";
+
+interface ExperienceItem {
+  id: number;
+  documentId: string;
+  position: string;
+  company: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+  url?: string;
+  slug: string;
+  order: number;
+}
+
+interface ExperienceProps {
+  experiences?: ExperienceItem[];
+}
+
+const Experience = ({ experiences }: ExperienceProps) => {
+  // Gradientes disponibles para usar de forma aleatoria
+  const gradients = [
+    "gradient-text-primary",
+    "gradient-text-ocean",
+    "gradient-text-sunset",
+    "gradient-text-nature",
+    "gradient-text-cosmic",
+    "gradient-text-fire",
+    "gradient-text-neon",
   ];
+
+  const timelineGradients = [
+    "gradient-bg-primary",
+    "gradient-bg-ocean",
+    "gradient-bg-sunset",
+    "gradient-bg-nature",
+    "gradient-bg-cosmic",
+    "gradient-bg-fire",
+    "gradient-bg-neon",
+  ];
+
+  // Verificar si hay datos de la API
+  const hasApiData = experiences && experiences.length > 0;
 
   return (
     <section id="experiencia" className="min-h-screen flex items-center py-20">
@@ -39,44 +50,54 @@ const Experience = () => {
           Experiencia Profesional
         </h2>
 
-        <div className="space-y-12">
-          {experiences.map((exp, index) => (
-            <div key={index} className="card-gradient relative pl-8">
-              {/* Línea de tiempo */}
-              <div className="absolute left-0 top-0 h-full w-1 gradient-bg-primary rounded-full" />
-              <div className="absolute -left-2 top-6 w-5 h-5 rounded-full gradient-bg-primary border-4 border-gray-900" />
+        {hasApiData ? (
+          <div className="space-y-12">
+            {experiences
+              .sort((a, b) => a.order - b.order)
+              .map((exp, index) => {
+                // Asignar gradientes de forma cíclica basada en el índice
+                const textGradient = gradients[index % gradients.length];
+                const timelineGradient =
+                  timelineGradients[index % timelineGradients.length];
 
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold gradient-text-primary">
-                    {exp.position}
-                  </h3>
-                  <h4 className="text-xl text-gray-300 font-medium">
-                    {exp.company}
-                  </h4>
-                  <p className="text-sm text-gray-400 font-medium">
-                    {exp.period}
-                  </p>
-                </div>
-
-                <p className="text-gray-300 leading-relaxed">
-                  {exp.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                return (
+                  <CardExperience
+                    key={exp.documentId}
+                    experience={exp}
+                    textGradient={textGradient}
+                    timelineGradient={timelineGradient}
+                  />
+                );
+              })}
+          </div>
+        ) : (
+          <div className="flex items-center justify-center min-h-[300px]">
+            <div className="text-center">
+              <div className="mb-4">
+                <svg
+                  className="mx-auto h-16 w-16 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
               </div>
+              <h3 className="text-xl font-semibold text-gray-300 mb-2">
+                Sin datos para mostrar
+              </h3>
+              <p className="text-gray-500 max-w-md">
+                No se encontró información de experiencia profesional en este
+                momento.
+              </p>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );
