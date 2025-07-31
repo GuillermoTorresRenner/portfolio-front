@@ -27,27 +27,6 @@ interface ExperienceProps {
 }
 
 const Experience = ({ experiences }: ExperienceProps) => {
-  // Gradientes disponibles para usar de forma aleatoria
-  const gradients = [
-    "gradient-text-primary",
-    "gradient-text-ocean",
-    "gradient-text-sunset",
-    "gradient-text-nature",
-    "gradient-text-cosmic",
-    "gradient-text-fire",
-    "gradient-text-neon",
-  ];
-
-  const timelineGradients = [
-    "gradient-bg-primary",
-    "gradient-bg-ocean",
-    "gradient-bg-sunset",
-    "gradient-bg-nature",
-    "gradient-bg-cosmic",
-    "gradient-bg-fire",
-    "gradient-bg-neon",
-  ];
-
   // Verificar si hay datos de la API
   const hasApiData = experiences && experiences.length > 0;
 
@@ -63,17 +42,12 @@ const Experience = ({ experiences }: ExperienceProps) => {
             {experiences
               .sort((a, b) => a.order - b.order)
               .map((exp, index) => {
-                // Asignar gradientes de forma cíclica basada en el índice
-                const textGradient = gradients[index % gradients.length];
-                const timelineGradient =
-                  timelineGradients[index % timelineGradients.length];
-
                 return (
                   <CardExperience
                     key={exp.documentId}
                     experience={exp}
-                    textGradient={textGradient}
-                    timelineGradient={timelineGradient}
+                    textGradient="gradient-text-sunset"
+                    timelineGradient="gradient-bg-sunset"
                   />
                 );
               })}

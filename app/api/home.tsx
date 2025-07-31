@@ -3,7 +3,7 @@ import { api } from "./api";
 export const getHomeData = async () => {
   try {
     const res = await api.get(
-      "/home?populate[0]=experiences&populate[1]=experiences.technologies"
+      "/home?populate[technologies]=true&populate[socials]=true&populate[experiences][populate][technologies]=true&populate[projects][populate][technologies]=true&populate[projects][populate][image]=true"
     );
     console.log(res.data.data);
 
