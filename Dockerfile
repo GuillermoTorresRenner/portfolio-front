@@ -5,15 +5,21 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies (solo las de producción)
-RUN npm ci --only=production
+# Install all dependencies (needed for build)
+RUN npm ci
 
-# Copy the pre-built application from CI/CD
-COPY build ./build
+# Copy source code and config files
+COPY . .
 
-# Copy any necessary config files
-COPY react-router.config.ts ./
-COPY tsconfig.json ./
+# Build argument for API URL
+ARG VITE_BASE_API_URL=http://localhost:1337/api
+ENV VITE_BASE_API_URL=$VITE_BASE_API_URL
+
+# Build the application
+RUN npm run build
+
+# Remove dev dependencies to reduce image size
+RUN npm ci --only=production && npm cache clean --force
 
 # Expose port
 EXPOSE 3000
