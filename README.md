@@ -85,11 +85,13 @@ Para que el despliegue automático funcione, configura estos **secrets** en tu r
 ### Settings > Secrets and Variables > Actions
 
 1. **DOCKERHUB_USERNAME**: Tu nombre de usuario de DockerHub
+
    ```
    lebateleur
    ```
 
 2. **DOCKERHUB_PASSWORD**: Token de acceso de DockerHub ⚠️ (NO tu contraseña)
+
    ```
    Crear en: DockerHub > Account Settings > Security > Access Tokens
    ```
@@ -153,16 +155,20 @@ docker system prune
 ## 🔧 Troubleshooting
 
 ### El contenedor se detiene inmediatamente
+
 - Verifica que el Dockerfile tenga el comando `CMD` con `serve`
 
 ### Error 404 en rutas del SPA
+
 - El servidor `serve` con flag `-s` maneja automáticamente las SPAs
 
 ### Problemas de conectividad con la API
+
 - Verifica `VITE_BASE_API_URL` en las variables de entorno
 - Revisa los logs: `docker logs portfolio-app`
 
 ### GitHub Action falla
+
 - Verifica que todos los secrets estén configurados
 - Revisa los logs en la pestaña "Actions"
 
@@ -193,6 +199,7 @@ El proyecto incluye soporte para múltiples idiomas:
 ---
 
 **Tecnologías utilizadas:**
+
 - React Router v7
 - TypeScript
 - TailwindCSS
