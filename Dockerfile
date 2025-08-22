@@ -11,8 +11,9 @@ RUN npm ci
 # Copy source code and config files
 COPY . .
 
-# Vite automáticamente lee el archivo .env durante el build
-# No necesitamos ARG ni ENV para VITE_BASE_API_URL
+# Build argument for API URL
+ARG VITE_BASE_API_URL=http://http://72.60.52.178/:1337/api
+ENV VITE_BASE_API_URL=$VITE_BASE_API_URL
 
 # Build the application
 RUN npm run build
