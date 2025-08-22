@@ -12,7 +12,7 @@ RUN npm ci
 COPY . .
 
 # Build argument for API URL
-ARG VITE_BASE_API_URL=http://72.60.52.178:1337/api
+ARG VITE_BASE_API_URL=https://api-portfolio.guillermotorresdev.com:1337/api
 ENV VITE_BASE_API_URL=$VITE_BASE_API_URL
 
 # Build the application
