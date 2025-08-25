@@ -110,19 +110,29 @@ export default function ProjectDetail() {
 
   // Función para obtener la URL de la imagen
   const getImageUrl = (image: any) => {
-    // Usar la misma baseURL que está configurada para la API
-    const baseUrl =
-      api.defaults.baseURL?.replace("/api", "") || "http://localhost:1337";
+    // URL base hardcodeada para uploads de Strapi
+    const baseUrl = "https://api-portfolio.guillermotorresdev.com";
+
+    // Debug: ver qué datos estamos recibiendo
+    console.log("Image data:", image);
 
     // Priorizar formatos disponibles: large > medium > small > original
     if (image.formats?.large?.url) {
-      return `${baseUrl}${image.formats.large.url}`;
+      const url = `${baseUrl}${image.formats.large.url}`;
+      console.log("Generated URL (large):", url);
+      return url;
     } else if (image.formats?.medium?.url) {
-      return `${baseUrl}${image.formats.medium.url}`;
+      const url = `${baseUrl}${image.formats.medium.url}`;
+      console.log("Generated URL (medium):", url);
+      return url;
     } else if (image.formats?.small?.url) {
-      return `${baseUrl}${image.formats.small.url}`;
+      const url = `${baseUrl}${image.formats.small.url}`;
+      console.log("Generated URL (small):", url);
+      return url;
     } else {
-      return `${baseUrl}${image.url}`;
+      const url = `${baseUrl}${image.url}`;
+      console.log("Generated URL (original):", url);
+      return url;
     }
   };
 
@@ -227,7 +237,7 @@ export default function ProjectDetail() {
 
             {/* Sidebar con información adicional */}
             <div className="space-y-6">
-              {/* Imagen asiada del proyecto */}
+              {/* Imagen adicional del proyecto */}
               {project.image && project.image.length > 2 && (
                 <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
                   <h3 className="text-xl font-bold mb-4 gradient-text-neon">

@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // Get the base API URL from environment variables
-const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
+// const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
+const BASE_API_URL = "https://api-portfolio.guillermotorresdev.com/api";
 
 // Throw error if no API URL is configured
 if (!BASE_API_URL) {
