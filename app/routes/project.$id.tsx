@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import type { Route } from "./+types/project.$id";
 import { useParams, Link } from "react-router";
 import { getSingleProjectData } from "~/api/project";
+import { api } from "~/api/api";
 import RichText from "~/components/RichText";
 import TechChips from "~/components/TechChips";
 import LanguageSelector from "~/components/LanguageSelector";
@@ -45,7 +46,6 @@ export default function ProjectDetail() {
         );
       } else {
         setProject(data);
-        console.log(data);
       }
     } catch (err) {
       console.error("Error loading project:", err);
@@ -110,7 +110,9 @@ export default function ProjectDetail() {
 
   // Función para obtener la URL de la imagen
   const getImageUrl = (image: any) => {
-    const baseUrl = "http://localhost:1337";
+    // Usar la misma baseURL que está configurada para la API
+    const baseUrl =
+      api.defaults.baseURL?.replace("/api", "") || "http://localhost:1337";
 
     // Priorizar formatos disponibles: large > medium > small > original
     if (image.formats?.large?.url) {

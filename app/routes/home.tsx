@@ -30,7 +30,6 @@ export default function Home() {
     setIsLoading(true);
     try {
       const data = await getHomeData(getAPILocale());
-      console.log(data);
       setHomeData(data);
     } catch (error) {
       console.error("Error loading data:", error);
