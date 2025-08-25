@@ -3,7 +3,7 @@ import { api } from "./api";
 export const getProjectsData = async () => {
   try {
     const res = await api.get(
-      "http://localhost:1337/api/projects?populate[0]=technologies&populate[1]=images"
+      "/projects?populate[0]=technologies&populate[1]=images"
     );
 
     const data = res.data.data;

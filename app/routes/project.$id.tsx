@@ -110,29 +110,19 @@ export default function ProjectDetail() {
 
   // Función para obtener la URL de la imagen
   const getImageUrl = (image: any) => {
-    // URL base hardcodeada para uploads de Strapi
-    const baseUrl = "https://api-portfolio.guillermotorresdev.com";
-
-    // Debug: ver qué datos estamos recibiendo
-    console.log("Image data:", image);
+    // Usar la URL base del servidor desde variables de entorno
+    const baseServerUrl =
+      import.meta.env.VITE_BASE_SERVER_URL || "http://localhost:1337";
 
     // Priorizar formatos disponibles: large > medium > small > original
     if (image.formats?.large?.url) {
-      const url = `${baseUrl}${image.formats.large.url}`;
-      console.log("Generated URL (large):", url);
-      return url;
+      return `${baseServerUrl}${image.formats.large.url}`;
     } else if (image.formats?.medium?.url) {
-      const url = `${baseUrl}${image.formats.medium.url}`;
-      console.log("Generated URL (medium):", url);
-      return url;
+      return `${baseServerUrl}${image.formats.medium.url}`;
     } else if (image.formats?.small?.url) {
-      const url = `${baseUrl}${image.formats.small.url}`;
-      console.log("Generated URL (small):", url);
-      return url;
+      return `${baseServerUrl}${image.formats.small.url}`;
     } else {
-      const url = `${baseUrl}${image.url}`;
-      console.log("Generated URL (original):", url);
-      return url;
+      return `${baseServerUrl}${image.url}`;
     }
   };
 
