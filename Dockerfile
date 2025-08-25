@@ -26,5 +26,5 @@ RUN npm ci --only=production && npm cache clean --force
 # Expose port
 EXPOSE 3000
 
-# Start serving the static files (SPA mode)
-CMD ["serve", "-s", "build/client", "-l", "3000"]
+# Start serving with SPA fallback para React Router
+CMD ["serve", "-s", "build/client", "-l", "3000", "--single"]

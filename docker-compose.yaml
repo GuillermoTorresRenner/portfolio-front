@@ -6,7 +6,7 @@ services:
     ports:
       - "3001:3000"
     env_file:
-      - .env
+      - .env.production
     environment:
       # Pasar las variables desde el .env al contenedor
       - VITE_BASE_API_URL=${VITE_BASE_API_URL}
