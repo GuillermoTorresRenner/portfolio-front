@@ -1,15 +1,11 @@
-version: '3.8'
-
 services:
   frontend:
     image: ${DOCKERHUB_REPOSITORY:-portfolio}:${IMAGE_TAG:-latest}
-    ports:
-      - "3001:3000"
     env_file:
       - .env
     restart: unless-stopped
     networks:
-      - portfolio-network
+      - WEB
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
       interval: 30s
@@ -18,5 +14,5 @@ services:
       start_period: 40s
 
 networks:
-  portfolio-network:
-    driver: bridge
+  WEB:
+    external: true
