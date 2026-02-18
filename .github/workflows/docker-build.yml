@@ -1,46 +1,89 @@
-name: Build and Push Docker Image
+name: Build and Deploy to VPS
 
 on:
   push:
-    branches: [main, master, develop]
-  pull_request:
-    branches: [main, master, develop]
+    branches:
+      - main
+
+env:
+  DOCKERHUB_REPOSITORY: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio
+  PROJECT_PATH: /home/deployer/proyectos/portfolio/front
 
 jobs:
-  build-and-push:
+  build:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-      - name: Log in to DockerHub
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up production environment file
+        run: |
+          echo "${{ secrets.PROD_ENV_VARS }}" > .env.production
+
+      - name: Build project
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Extract metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=sha,prefix={{branch}}-
-            type=raw,value=latest,enable={{is_default_branch}}
+      - name: Build, tag, and push Docker image to Docker Hub
+        run: |
+          COMMIT_TAG=${{ github.sha }}
+          docker build -t ${{ env.DOCKERHUB_REPOSITORY }}:$COMMIT_TAG -t ${{ env.DOCKERHUB_REPOSITORY }}:latest .
+          docker push ${{ env.DOCKERHUB_REPOSITORY }}:$COMMIT_TAG
+          docker push ${{ env.DOCKERHUB_REPOSITORY }}:latest
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+      - name: Upload files to VPS
+        uses: appleboy/scp-action@v0.1.4
         with:
-          context: .
-          push: true
-          # Sin build-args, Vite usará el .env del repositorio
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          source: "docker-compose.yaml,.env.production"
+          target: ${{ env.PROJECT_PATH }}/
+          strip_components: 0
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          envs: DOCKERHUB_REPOSITORY,PROJECT_PATH
+          script: |
+            echo "Starting deployment..."
+            mkdir -p $PROJECT_PATH
+            cd $PROJECT_PATH
+            echo "Current directory: $(pwd)"
+            echo "Listing files in project path:"
+            ls -la
+            if [ ! -f docker-compose.yaml ]; then
+              echo "ERROR: docker-compose.yaml not found in $PROJECT_PATH"
+              exit 1
+            fi
+            echo "Stopping existing containers..."
+            docker compose down || echo "No containers to stop"
+            echo "Pulling latest image..."
+            docker pull ${{ env.DOCKERHUB_REPOSITORY }}:latest
+            echo "Starting containers..."
+            docker compose up -d
+            echo "Checking container status..."
+            docker compose ps
+            echo "Deployment completed successfully."

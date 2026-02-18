@@ -1,19 +1,21 @@
+version: '3.8'
+
 services:
   frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ${DOCKERHUB_REPOSITORY:-portfolio}:${IMAGE_TAG:-latest}
     ports:
       - "3001:3000"
     env_file:
       - .env.production
-    environment:
-      # Pasar las variables desde el .env al contenedor
-      - VITE_BASE_API_URL=${VITE_BASE_API_URL}
-      - VITE_BASE_SERVER_URL=${VITE_BASE_SERVER_URL}
     restart: unless-stopped
     networks:
       - portfolio-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
 networks:
   portfolio-network:
