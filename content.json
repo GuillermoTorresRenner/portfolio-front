@@ -1,0 +1,316 @@
+{
+  "home": {
+    "es": {
+      "name": "Guillermo Torres",
+      "subtitle": "Desarrollador Full Stack",
+      "description": "Apasionado por crear soluciones web modernas y escalables con las mejores tecnologías del mercado.",
+      "about": "Soy un **desarrollador Full Stack** con experiencia en el diseño y desarrollo de aplicaciones web modernas.\n\nMe especializo en tecnologías como **React**, **Node.js**, **TypeScript** y **Python**, y me apasiona crear soluciones que resuelvan problemas reales.\n\nSiempre estoy buscando aprender nuevas herramientas y mejorar mis habilidades para entregar productos de alta calidad.",
+      "position": "Full Stack Developer",
+      "location": "Santiago, Chile",
+      "email": "contacto@ejemplo.com",
+      "phone": "+56 9 1234 5678",
+      "linkedin": "https://linkedin.com/in/ejemplo",
+      "github": "https://github.com/ejemplo",
+      "technologies": [
+        { "id": 1, "name": "React", "url": "https://reactjs.org", "icon": "react" },
+        { "id": 2, "name": "TypeScript", "url": "https://www.typescriptlang.org", "icon": "typescript" },
+        { "id": 3, "name": "Node.js", "url": "https://nodejs.org", "icon": "nodejs" },
+        { "id": 4, "name": "Python", "url": "https://python.org", "icon": "python" },
+        { "id": 5, "name": "TailwindCSS", "url": "https://tailwindcss.com", "icon": "tailwindcss" },
+        { "id": 6, "name": "Docker", "url": "https://docker.com", "icon": "docker" },
+        { "id": 7, "name": "PostgreSQL", "url": "https://postgresql.org", "icon": "postgresql" },
+        { "id": 8, "name": "Git", "url": "https://git-scm.com", "icon": "git" }
+      ],
+      "experiences": [
+        {
+          "id": 1,
+          "documentId": "exp-001",
+          "position": "Desarrollador Full Stack Senior",
+          "company": "Tech Company",
+          "start_date": "2023-01",
+          "end_date": "Presente",
+          "description": "Desarrollo de aplicaciones web con **React** y **Node.js**.\n\n- Diseño e implementación de APIs REST\n- Integración con servicios cloud (AWS)\n- Mentoría a desarrolladores junior",
+          "url": "https://ejemplo.com",
+          "slug": "tech-company",
+          "order": 1,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 2, "name": "TypeScript" },
+            { "id": 3, "name": "Node.js" },
+            { "id": 7, "name": "PostgreSQL" }
+          ]
+        },
+        {
+          "id": 2,
+          "documentId": "exp-002",
+          "position": "Desarrollador Frontend",
+          "company": "Startup Digital",
+          "start_date": "2021-06",
+          "end_date": "2022-12",
+          "description": "Desarrollo de interfaces de usuario modernas y responsivas.\n\n- Migración de aplicación legacy a **React**\n- Implementación de design system\n- Mejora del rendimiento un 40%",
+          "url": "https://ejemplo2.com",
+          "slug": "startup-digital",
+          "order": 2,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 5, "name": "TailwindCSS" },
+            { "id": 2, "name": "TypeScript" }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "id": 1,
+          "documentId": "proj-001",
+          "title": "E-Commerce Platform",
+          "exerpt": "Plataforma de comercio electrónico completa con carrito de compras, pagos y panel de administración.",
+          "description": "Una plataforma de comercio electrónico moderna construida con **React** y **Node.js**.\n\n## Características principales\n\n- Catálogo de productos con filtrado y búsqueda\n- Carrito de compras con persistencia\n- Integración con pasarela de pagos\n- Panel de administración para gestión de productos\n- Diseño responsive y accesible",
+          "slug": "e-commerce-platform",
+          "code_url": "https://github.com/ejemplo/ecommerce",
+          "demo_url": "https://ecommerce-demo.ejemplo.com",
+          "order": 1,
+          "is_main": true,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 3, "name": "Node.js" },
+            { "id": 7, "name": "PostgreSQL" },
+            { "id": 6, "name": "Docker" }
+          ],
+          "image": [
+            {
+              "id": 1,
+              "url": "/images/projects/ecommerce-hero.png",
+              "alternativeText": "E-Commerce Platform - Vista principal",
+              "formats": {
+                "thumbnail": { "url": "/images/projects/ecommerce-hero-thumb.png" },
+                "small": { "url": "/images/projects/ecommerce-hero-small.png" }
+              }
+            },
+            {
+              "id": 2,
+              "url": "/images/projects/ecommerce-dashboard.png",
+              "alternativeText": "E-Commerce Platform - Dashboard",
+              "formats": {
+                "thumbnail": { "url": "/images/projects/ecommerce-dashboard-thumb.png" }
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "documentId": "proj-002",
+          "title": "Task Manager App",
+          "exerpt": "Aplicación de gestión de tareas con colaboración en tiempo real y notificaciones.",
+          "description": "Aplicación de gestión de tareas construida con **React** y **TypeScript**.\n\n## Funcionalidades\n\n- Tableros tipo Kanban\n- Colaboración en tiempo real\n- Notificaciones push\n- Reportes de productividad\n- Integración con calendario",
+          "slug": "task-manager",
+          "code_url": "https://github.com/ejemplo/task-manager",
+          "demo_url": "https://tasks-demo.ejemplo.com",
+          "youtube_url": "https://youtube.com/watch?v=ejemplo",
+          "order": 2,
+          "is_main": true,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 2, "name": "TypeScript" },
+            { "id": 5, "name": "TailwindCSS" }
+          ],
+          "image": [
+            {
+              "id": 3,
+              "url": "/images/projects/taskmanager-hero.png",
+              "alternativeText": "Task Manager - Vista principal",
+              "formats": {
+                "thumbnail": { "url": "/images/projects/taskmanager-hero-thumb.png" }
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "documentId": "proj-003",
+          "title": "Portfolio Personal",
+          "exerpt": "Sitio web portfolio desarrollado con React Router v7 y TailwindCSS.",
+          "description": "Mi portfolio personal, construido con las últimas tecnologías web.\n\n## Stack\n\n- **React Router v7** con SSR\n- **TailwindCSS** para estilos\n- **Docker** para despliegue\n- **GitHub Actions** para CI/CD",
+          "slug": "portfolio",
+          "code_url": "https://github.com/ejemplo/portfolio",
+          "order": 3,
+          "is_main": false,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 2, "name": "TypeScript" },
+            { "id": 5, "name": "TailwindCSS" },
+            { "id": 6, "name": "Docker" }
+          ],
+          "image": [
+            {
+              "id": 4,
+              "url": "/images/projects/portfolio-hero.png",
+              "alternativeText": "Portfolio - Vista principal"
+            }
+          ]
+        }
+      ],
+      "socials": [
+        { "id": 1, "name": "GitHub", "url": "https://github.com/ejemplo" },
+        { "id": 2, "name": "LinkedIn", "url": "https://linkedin.com/in/ejemplo" },
+        { "id": 3, "name": "Email", "url": "mailto:contacto@ejemplo.com" },
+        { "id": 4, "name": "YouTube", "url": "https://youtube.com/@ejemplo" }
+      ]
+    },
+    "en": {
+      "name": "Guillermo Torres",
+      "subtitle": "Full Stack Developer",
+      "description": "Passionate about creating modern and scalable web solutions with the best technologies on the market.",
+      "about": "I'm a **Full Stack Developer** with experience in designing and developing modern web applications.\n\nI specialize in technologies like **React**, **Node.js**, **TypeScript**, and **Python**, and I'm passionate about creating solutions that solve real problems.\n\nI'm always looking to learn new tools and improve my skills to deliver high-quality products.",
+      "position": "Full Stack Developer",
+      "location": "Santiago, Chile",
+      "email": "contact@example.com",
+      "phone": "+56 9 1234 5678",
+      "linkedin": "https://linkedin.com/in/example",
+      "github": "https://github.com/example",
+      "technologies": [
+        { "id": 1, "name": "React", "url": "https://reactjs.org", "icon": "react" },
+        { "id": 2, "name": "TypeScript", "url": "https://www.typescriptlang.org", "icon": "typescript" },
+        { "id": 3, "name": "Node.js", "url": "https://nodejs.org", "icon": "nodejs" },
+        { "id": 4, "name": "Python", "url": "https://python.org", "icon": "python" },
+        { "id": 5, "name": "TailwindCSS", "url": "https://tailwindcss.com", "icon": "tailwindcss" },
+        { "id": 6, "name": "Docker", "url": "https://docker.com", "icon": "docker" },
+        { "id": 7, "name": "PostgreSQL", "url": "https://postgresql.org", "icon": "postgresql" },
+        { "id": 8, "name": "Git", "url": "https://git-scm.com", "icon": "git" }
+      ],
+      "experiences": [
+        {
+          "id": 1,
+          "documentId": "exp-001",
+          "position": "Senior Full Stack Developer",
+          "company": "Tech Company",
+          "start_date": "2023-01",
+          "end_date": "Present",
+          "description": "Development of web applications with **React** and **Node.js**.\n\n- Design and implementation of REST APIs\n- Cloud services integration (AWS)\n- Junior developer mentoring",
+          "url": "https://example.com",
+          "slug": "tech-company",
+          "order": 1,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 2, "name": "TypeScript" },
+            { "id": 3, "name": "Node.js" },
+            { "id": 7, "name": "PostgreSQL" }
+          ]
+        },
+        {
+          "id": 2,
+          "documentId": "exp-002",
+          "position": "Frontend Developer",
+          "company": "Digital Startup",
+          "start_date": "2021-06",
+          "end_date": "2022-12",
+          "description": "Development of modern and responsive user interfaces.\n\n- Migration of legacy application to **React**\n- Design system implementation\n- 40% performance improvement",
+          "url": "https://example2.com",
+          "slug": "digital-startup",
+          "order": 2,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 5, "name": "TailwindCSS" },
+            { "id": 2, "name": "TypeScript" }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "id": 1,
+          "documentId": "proj-001",
+          "title": "E-Commerce Platform",
+          "exerpt": "Complete e-commerce platform with shopping cart, payments, and admin panel.",
+          "description": "A modern e-commerce platform built with **React** and **Node.js**.\n\n## Key Features\n\n- Product catalog with filtering and search\n- Shopping cart with persistence\n- Payment gateway integration\n- Admin panel for product management\n- Responsive and accessible design",
+          "slug": "e-commerce-platform",
+          "code_url": "https://github.com/example/ecommerce",
+          "demo_url": "https://ecommerce-demo.example.com",
+          "order": 1,
+          "is_main": true,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 3, "name": "Node.js" },
+            { "id": 7, "name": "PostgreSQL" },
+            { "id": 6, "name": "Docker" }
+          ],
+          "image": [
+            {
+              "id": 1,
+              "url": "/images/projects/ecommerce-hero.png",
+              "alternativeText": "E-Commerce Platform - Main view",
+              "formats": {
+                "thumbnail": { "url": "/images/projects/ecommerce-hero-thumb.png" },
+                "small": { "url": "/images/projects/ecommerce-hero-small.png" }
+              }
+            },
+            {
+              "id": 2,
+              "url": "/images/projects/ecommerce-dashboard.png",
+              "alternativeText": "E-Commerce Platform - Dashboard",
+              "formats": {
+                "thumbnail": { "url": "/images/projects/ecommerce-dashboard-thumb.png" }
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "documentId": "proj-002",
+          "title": "Task Manager App",
+          "exerpt": "Task management application with real-time collaboration and notifications.",
+          "description": "Task management application built with **React** and **TypeScript**.\n\n## Features\n\n- Kanban-style boards\n- Real-time collaboration\n- Push notifications\n- Productivity reports\n- Calendar integration",
+          "slug": "task-manager",
+          "code_url": "https://github.com/example/task-manager",
+          "demo_url": "https://tasks-demo.example.com",
+          "youtube_url": "https://youtube.com/watch?v=example",
+          "order": 2,
+          "is_main": true,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 2, "name": "TypeScript" },
+            { "id": 5, "name": "TailwindCSS" }
+          ],
+          "image": [
+            {
+              "id": 3,
+              "url": "/images/projects/taskmanager-hero.png",
+              "alternativeText": "Task Manager - Main view",
+              "formats": {
+                "thumbnail": { "url": "/images/projects/taskmanager-hero-thumb.png" }
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "documentId": "proj-003",
+          "title": "Personal Portfolio",
+          "exerpt": "Portfolio website built with React Router v7 and TailwindCSS.",
+          "description": "My personal portfolio, built with the latest web technologies.\n\n## Stack\n\n- **React Router v7** with SSR\n- **TailwindCSS** for styling\n- **Docker** for deployment\n- **GitHub Actions** for CI/CD",
+          "slug": "portfolio",
+          "code_url": "https://github.com/example/portfolio",
+          "order": 3,
+          "is_main": false,
+          "technologies": [
+            { "id": 1, "name": "React" },
+            { "id": 2, "name": "TypeScript" },
+            { "id": 5, "name": "TailwindCSS" },
+            { "id": 6, "name": "Docker" }
+          ],
+          "image": [
+            {
+              "id": 4,
+              "url": "/images/projects/portfolio-hero.png",
+              "alternativeText": "Portfolio - Main view"
+            }
+          ]
+        }
+      ],
+      "socials": [
+        { "id": 1, "name": "GitHub", "url": "https://github.com/example" },
+        { "id": 2, "name": "LinkedIn", "url": "https://linkedin.com/in/example" },
+        { "id": 3, "name": "Email", "url": "mailto:contact@example.com" },
+        { "id": 4, "name": "YouTube", "url": "https://youtube.com/@example" }
+      ]
+    }
+  }
+}

@@ -10,6 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import Focus from "./components/Focus";
+import LanguageSelector from "~/components/LanguageSelector";
+import { LanguageProvider } from "~/contexts/LanguageContext";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -45,7 +47,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <LanguageProvider>
+      <div className="fixed right-4 top-4 z-[60]">
+        <LanguageSelector />
+      </div>
+      <Outlet />
+    </LanguageProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

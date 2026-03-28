@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { Route } from "./+types/project.$id";
 import { useParams, Link } from "react-router";
 import { getSingleProjectData } from "~/api/project";
 import RichText from "~/components/RichText";
 import TechChips from "~/components/TechChips";
 import { HiArrowLeft, HiExternalLink, HiCode, HiPlay } from "react-icons/hi";
-import type { Project, ProjectImage } from "~/types";
+import type { Project } from "~/types";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,80 +17,34 @@ export function meta({}: Route.MetaArgs) {
 
 export default function ProjectDetail() {
   const params = useParams();
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { currentLanguage } = useLanguage();
+  const project = params.id
+    ? (getSingleProjectData(params.id, currentLanguage) as Project | null)
+    : null;
 
-  const loadProject = async () => {
-    if (!params.id) {
-      setError("Project ID not found");
-      setLoading(false);
-      return;
-    }
-
-    try {
-      const data = await getSingleProjectData(params.id);
-      if (!data) {
-        setError("Project not found");
-      } else {
-        setProject(data);
-        console.log(data);
-      }
-    } catch (err) {
-      console.error("Error loading project:", err);
-      setError("Failed to load project");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadProject();
-  }, [params.id]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
-          <p className="text-xl text-gray-300">Loading project...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !project) {
+  if (!project) {
     return (
       <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4 text-red-400">
-            Project Not Found
+            {currentLanguage === "es" ? "Proyecto no encontrado" : "Project Not Found"}
           </h1>
           <p className="text-xl text-gray-300 mb-8">
-            {error || "The requested project could not be found."}
+            {currentLanguage === "es"
+              ? "No se pudo encontrar el proyecto solicitado."
+              : "The requested project could not be found."}
           </p>
           <Link to="/projects" className="btn-gradient-neon">
-            ← Back to Projects
+            {currentLanguage === "es" ? "← Volver a Proyectos" : "← Back to Projects"}
           </Link>
         </div>
       </div>
     );
   }
 
-  // Función para obtener la URL de la imagen
+  // Las imágenes ahora apuntan directamente a archivos en public/
   const getImageUrl = (image: any) => {
-    const baseUrl = "http://localhost:1337";
-
-    // Priorizar formatos disponibles: large > medium > small > original
-    if (image.formats?.large?.url) {
-      return `${baseUrl}${image.formats.large.url}`;
-    } else if (image.formats?.medium?.url) {
-      return `${baseUrl}${image.formats.medium.url}`;
-    } else if (image.formats?.small?.url) {
-      return `${baseUrl}${image.formats.small.url}`;
-    } else {
-      return `${baseUrl}${image.url}`;
-    }
+    return image.url;
   };
 
   return (
@@ -103,7 +58,7 @@ export default function ProjectDetail() {
               className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
             >
               <HiArrowLeft className="w-5 h-5 mr-2" />
-              Volver al Home
+              {currentLanguage === "es" ? "Volver al Home" : "Back to Home"}
             </Link>
           </div>
 
@@ -135,7 +90,7 @@ export default function ProjectDetail() {
                   <div className="absolute top-6 left-6">
                     <div className="bg-cyan-400/20 backdrop-blur-sm rounded-full px-4 py-2 border border-cyan-400/30">
                       <span className="text-cyan-300 text-sm font-medium">
-                        Proyecto Destacado
+                        {currentLanguage === "es" ? "Proyecto Destacado" : "Featured Project"}
                       </span>
                     </div>
                   </div>
@@ -150,7 +105,7 @@ export default function ProjectDetail() {
             <div className="lg:col-span-2">
               <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800/50">
                 <h2 className="text-2xl font-bold mb-6 gradient-text-neon">
-                  Acerca del Proyecto
+                  {currentLanguage === "es" ? "Acerca del Proyecto" : "About the Project"}
                 </h2>
                 <div className="prose prose-invert prose-cyan max-w-none prose-lg">
                   <RichText content={project.description} />
@@ -162,7 +117,7 @@ export default function ProjectDetail() {
                 <div className="mt-8">
                   <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
                     <h3 className="text-xl font-bold mb-4 gradient-text-neon">
-                      Captura del Proyecto
+                      {currentLanguage === "es" ? "Captura del Proyecto" : "Project Screenshot"}
                     </h3>
                     <div className="relative overflow-hidden rounded-xl">
                       <img
@@ -186,7 +141,7 @@ export default function ProjectDetail() {
               {project.image && project.image.length > 2 && (
                 <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
                   <h3 className="text-xl font-bold mb-4 gradient-text-neon">
-                    Vista Adicional
+                    {currentLanguage === "es" ? "Vista Adicional" : "Additional View"}
                   </h3>
                   <div className="relative overflow-hidden rounded-xl">
                     <img
@@ -206,7 +161,7 @@ export default function ProjectDetail() {
               {project.technologies && project.technologies.length > 0 && (
                 <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
                   <h3 className="text-xl font-bold mb-4 gradient-text-neon">
-                    Stack Tecnológico
+                    {currentLanguage === "es" ? "Stack Tecnológico" : "Tech Stack"}
                   </h3>
                   <TechChips
                     technologies={project.technologies}
@@ -219,7 +174,7 @@ export default function ProjectDetail() {
               {/* Sección de Enlaces */}
               <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
                 <h3 className="text-xl font-bold mb-4 gradient-text-neon">
-                  Enlaces
+                  {currentLanguage === "es" ? "Enlaces" : "Links"}
                 </h3>
                 <div className="flex flex-col gap-3">
                   {project.demo_url && (
@@ -233,7 +188,7 @@ export default function ProjectDetail() {
                         <HiExternalLink className="w-5 h-5 text-white" />
                       </div>
                       <span className="text-gray-300 group-hover:text-cyan-300 transition-colors duration-300 font-medium">
-                        Sitio Web
+                        {currentLanguage === "es" ? "Sitio Web" : "Website"}
                       </span>
                     </a>
                   )}
@@ -249,7 +204,7 @@ export default function ProjectDetail() {
                         <HiCode className="w-5 h-5 text-white" />
                       </div>
                       <span className="text-gray-300 group-hover:text-purple-300 transition-colors duration-300 font-medium">
-                        GitHub
+                        {currentLanguage === "es" ? "GitHub" : "Code"}
                       </span>
                     </a>
                   )}
@@ -278,7 +233,7 @@ export default function ProjectDetail() {
           {project.image && project.image.length > 3 && (
             <div className="mb-16">
               <h2 className="text-3xl font-bold mb-8 text-center gradient-text-neon">
-                Galería del Proyecto
+                {currentLanguage === "es" ? "Galeria del Proyecto" : "Project Gallery"}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {project.image.slice(3).map((image: any, index: number) => (
@@ -307,7 +262,7 @@ export default function ProjectDetail() {
               to="/projects"
               className="btn-gradient-neon inline-block text-lg px-8 py-3"
             >
-              Ver todos los proyectos
+              {currentLanguage === "es" ? "Ver todos los proyectos" : "View all projects"}
             </Link>
           </div>
         </div>

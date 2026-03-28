@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { Route } from "./+types/projects";
 import CardProjects from "~/components/CardProjects";
 import { getProjectData } from "~/api/project";
 import type { ProjectItem } from "~/types";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -12,35 +13,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Projects() {
-  const [projects, setProjects] = useState<ProjectItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const getAllProjects = async () => {
-    try {
-      const data = await getProjectData();
-      setProjects(data || []);
-    } catch (error) {
-      console.error("Error loading projects:", error);
-      setProjects([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getAllProjects();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
-          <p className="text-xl text-gray-300">Loading projects...</p>
-        </div>
-      </div>
-    );
-  }
+  const { currentLanguage } = useLanguage();
+  const projects = (getProjectData(currentLanguage) || []) as ProjectItem[];
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -49,11 +23,12 @@ export default function Projects() {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 gradient-text-neon">
-              All Projects
+              {currentLanguage === "es" ? "Todos los Proyectos" : "All Projects"}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              A complete collection of my development projects, from web
-              applications to enterprise solutions.
+              {currentLanguage === "es"
+                ? "Una colección completa de mis proyectos de desarrollo, desde aplicaciones web hasta soluciones empresariales."
+                : "A complete collection of my development projects, from web applications to enterprise solutions."}
             </p>
           </div>
 
@@ -70,7 +45,9 @@ export default function Projects() {
             ) : (
               <div className="text-center py-16">
                 <p className="text-xl text-gray-400">
-                  No projects available at the moment.
+                  {currentLanguage === "es"
+                    ? "No hay proyectos disponibles en este momento."
+                    : "No projects available at the moment."}
                 </p>
               </div>
             )}
@@ -79,7 +56,7 @@ export default function Projects() {
           {/* Navigation back */}
           <div className="text-center mt-16">
             <a href="/#projects" className="btn-gradient-neon inline-block">
-              ← Back to Home
+              {currentLanguage === "es" ? "← Volver al inicio" : "← Back to Home"}
             </a>
           </div>
         </div>

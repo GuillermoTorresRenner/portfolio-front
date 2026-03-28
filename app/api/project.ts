@@ -1,20 +1,14 @@
-import { api } from "./api";
+import { getContent } from "./api";
 
-export const getProjectData = async () => {
-  try {
-    const res = await api.get("/projects?populate=*");
-    return res.data.data;
-  } catch (error) {
-    console.error("Error fetching project data:", error);
-    return null;
-  }
+export const getProjectData = (locale: string = "en") => {
+  const content = getContent(locale as "es" | "en");
+  return content.projects || [];
 };
-export const getSingleProjectData = async (documentId: string) => {
-  try {
-    const res = await api.get(`/projects/${documentId}?populate=*`);
-    return res.data.data;
-  } catch (error) {
-    console.error("Error fetching project data:", error);
-    return null;
-  }
+
+export const getSingleProjectData = (
+  documentId: string,
+  locale: string = "en",
+) => {
+  const content = getContent(locale as "es" | "en");
+  return content.projects?.find((p) => p.documentId === documentId) || null;
 };

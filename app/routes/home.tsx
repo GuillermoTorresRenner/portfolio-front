@@ -4,10 +4,10 @@ import Aside from "~/components/Aside";
 import AboutMe from "~/components/AboutMe";
 import Experience from "~/components/Experience";
 import Projects from "~/components/Projects";
-import { useEffect, useState } from "react";
 import { getHomeData } from "~/api/home";
 import Techs from "~/components/Techs";
 import type { HomeData } from "~/types";
+import { useLanguage } from "~/contexts/LanguageContext";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -20,17 +20,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const [homeData, setHomeData] = useState<HomeData | null>(null);
-
-  const getAllData = async () => {
-    const data = await getHomeData();
-    console.log(data);
-    setHomeData(data);
-  };
-
-  useEffect(() => {
-    getAllData();
-  }, []);
+  const { currentLanguage } = useLanguage();
+  const homeData = getHomeData(currentLanguage) as HomeData | undefined;
 
   return (
     <div className="min-h-screen relative">

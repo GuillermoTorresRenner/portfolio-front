@@ -1,13 +1,12 @@
-import axios from "axios";
+import content from "../../content.json";
+import type { HomeData, Project } from "~/types";
 
-// Get the base API URL from environment variables or use default
-const BASE_API_URL =
-  import.meta.env.VITE_BASE_API_URL || "http://localhost:1337/api";
+type Locale = "es" | "en";
 
-export const api = axios.create({
-  baseURL: BASE_API_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-  timeout: 10000, // 10 seconds timeout
-});
+const data = content as {
+  home: Record<Locale, HomeData & { projects: Project[] }>;
+};
+
+export function getContent(locale: Locale = "en") {
+  return data.home[locale] || data.home.en;
+}
