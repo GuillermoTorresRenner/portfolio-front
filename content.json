@@ -1,8 +1,8 @@
 {
   "home": {
     "es": {
-      "name": "Guillermo Torres",
-      "subtitle": "Desarrollador Full Stack",
+      "name": "Guillermo Torres Renner",
+      "subtitle": "Desarrollador Full Stack | Devops | Arquitecto",
       "description": "Apasionado por crear soluciones web modernas y escalables con las mejores tecnologías del mercado.",
       "about": "Soy un **desarrollador Full Stack** con experiencia en el diseño y desarrollo de aplicaciones web modernas.\n\nMe especializo en tecnologías como **React**, **Node.js**, **TypeScript** y **Python**, y me apasiona crear soluciones que resuelvan problemas reales.\n\nSiempre estoy buscando aprender nuevas herramientas y mejorar mis habilidades para entregar productos de alta calidad.",
       "position": "Full Stack Developer",
@@ -12,14 +12,27 @@
       "linkedin": "https://linkedin.com/in/ejemplo",
       "github": "https://github.com/ejemplo",
       "technologies": [
-        { "id": 1, "name": "React", "url": "https://reactjs.org", "icon": "react" },
-        { "id": 2, "name": "TypeScript", "url": "https://www.typescriptlang.org", "icon": "typescript" },
-        { "id": 3, "name": "Node.js", "url": "https://nodejs.org", "icon": "nodejs" },
-        { "id": 4, "name": "Python", "url": "https://python.org", "icon": "python" },
-        { "id": 5, "name": "TailwindCSS", "url": "https://tailwindcss.com", "icon": "tailwindcss" },
-        { "id": 6, "name": "Docker", "url": "https://docker.com", "icon": "docker" },
-        { "id": 7, "name": "PostgreSQL", "url": "https://postgresql.org", "icon": "postgresql" },
-        { "id": 8, "name": "Git", "url": "https://git-scm.com", "icon": "git" }
+        { "id": 1, "name": "TypeScript", "url": "https://www.typescriptlang.org" },
+        { "id": 2, "name": "Python", "url": "https://python.org" },
+        { "id": 3, "name": "Java", "url": "https://www.java.com" },
+        { "id": 4, "name": "React", "url": "https://reactjs.org" },
+        { "id": 5, "name": "Next.js", "url": "https://nextjs.org" },
+        { "id": 6, "name": "Express.js", "url": "https://expressjs.com" },
+        { "id": 7, "name": "TailwindCSS", "url": "https://tailwindcss.com" },
+        { "id": 8, "name": "Docker", "url": "https://docker.com" },
+        { "id": 9, "name": "PostgreSQL", "url": "https://postgresql.org" },
+        { "id": 10, "name": "Github Actions", "url": "https://github.com/features/actions" },
+        { "id": 11, "name": "Ansible", "url": "https://www.ansible.com" },
+        { "id": 12, "name": "MongoDB", "url": "https://www.mongodb.com" },
+        { "id": 13, "name": "Spring Boot", "url": "https://spring.io/projects/spring-boot" },
+        { "id": 14, "name": "WordPress", "url": "https://wordpress.org" },
+        { "id": 14, "name": "Vue", "url": "https://vuejs.org" },
+        { "id": 15, "name": "Quasar", "url": "https://quasar.dev" },
+        { "id": 15, "name": "Jenkins", "url": "https://www.jenkins.io" },
+        { "id": 16, "name": "NestJS", "url": "https://nestjs.com" },
+        { "id": 17, "name": "n8n", "url": "https://n8n.io" },
+        { "id": 18, "name": "node-red", "url": "https://nodered.org" },
+        { "id": 19, "name": "Arduino", "url": "https://www.arduino.cc" }
       ],
       "experiences": [
         {
@@ -37,7 +50,7 @@
             { "id": 1, "name": "React" },
             { "id": 2, "name": "TypeScript" },
             { "id": 3, "name": "Node.js" },
-            { "id": 7, "name": "PostgreSQL" }
+            { "id": 8, "name": "PostgreSQL" }
           ]
         },
         {
@@ -168,14 +181,23 @@
       "linkedin": "https://linkedin.com/in/example",
       "github": "https://github.com/example",
       "technologies": [
-        { "id": 1, "name": "React", "url": "https://reactjs.org", "icon": "react" },
-        { "id": 2, "name": "TypeScript", "url": "https://www.typescriptlang.org", "icon": "typescript" },
-        { "id": 3, "name": "Node.js", "url": "https://nodejs.org", "icon": "nodejs" },
-        { "id": 4, "name": "Python", "url": "https://python.org", "icon": "python" },
-        { "id": 5, "name": "TailwindCSS", "url": "https://tailwindcss.com", "icon": "tailwindcss" },
-        { "id": 6, "name": "Docker", "url": "https://docker.com", "icon": "docker" },
-        { "id": 7, "name": "PostgreSQL", "url": "https://postgresql.org", "icon": "postgresql" },
-        { "id": 8, "name": "Git", "url": "https://git-scm.com", "icon": "git" }
+        { "id": 1, "name": "React", "url": "https://reactjs.org" },
+        { "id": 2, "name": "TypeScript", "url": "https://www.typescriptlang.org" },
+        { "id": 3, "name": "Node.js", "url": "https://nodejs.org" },
+        { "id": 4, "name": "Python", "url": "https://python.org" },
+        { "id": 5, "name": "TailwindCSS", "url": "https://tailwindcss.com" },
+        { "id": 6, "name": "Docker", "url": "https://docker.com" },
+        { "id": 7, "name": "PostgreSQL", "url": "https://postgresql.org" },
+        { "id": 8, "name": "Git", "url": "https://git-scm.com" },
+        { "id": 9, "name": "Ansible", "url": "https://www.ansible.com" },
+        { "id": 10, "name": "MongoDB", "url": "https://www.mongodb.com" },
+        { "id": 11, "name": "Spring Boot", "url": "https://spring.io/projects/spring-boot" },
+        { "id": 12, "name": "WordPress", "url": "https://wordpress.org" },
+        { "id": 13, "name": "Vue", "url": "https://vuejs.org" },
+        { "id": 14, "name": "Quasar", "url": "https://quasar.dev" },
+        { "id": 15, "name": "Jenkins", "url": "https://www.jenkins.io" },
+        { "id": 16, "name": "NestJS", "url": "https://nestjs.com" },
+        { "id": 17, "name": "n8n", "url": "https://n8n.io" }
       ],
       "experiences": [
         {

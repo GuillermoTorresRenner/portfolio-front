@@ -30,6 +30,8 @@ const TechChips: React.FC<TechChipsProps> = ({
     lg: "text-3xl",
   };
 
+  // Eliminada la lógica de iconos: ahora solo mostramos el nombre/enlace de la tecnología.
+
   if (!technologies || technologies.length === 0) {
     return null;
   }
@@ -54,7 +56,7 @@ const TechChips: React.FC<TechChipsProps> = ({
               cursor-default
             `}
           >
-            {tech.icon && <span className="mr-2">{tech.icon}</span>}
+            {/* Iconos eliminados por decisión del proyecto */}
             {tech.url ? (
               <a
                 href={tech.url}

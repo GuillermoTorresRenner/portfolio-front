@@ -5,7 +5,6 @@ interface Technology {
   id: number;
   name: string;
   url?: string;
-  icon?: string;
 }
 
 interface ExperienceItem {
