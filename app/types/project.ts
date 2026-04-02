@@ -4,7 +4,6 @@ export interface Technology {
   id: number;
   name: string;
   url?: string;
-  icon?: string;
 }
 
 export interface ProjectImage {
@@ -60,7 +59,6 @@ export interface ExperienceItem {
   end_date: string;
   description: string;
   url?: string;
-  slug: string;
   order: number;
 }
 
@@ -69,10 +67,7 @@ export interface HomeData {
   subtitle: string;
   description: string;
   about: string;
-  position: string;
-  location: string;
   email: string;
-  phone: string;
   linkedin: string;
   github: string;
   technologies: Technology[];

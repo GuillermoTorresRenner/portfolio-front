@@ -26,10 +26,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set up environment file
-        run: |
-          echo "${{ secrets.DOT_ENV }}" > .env
-
       - name: Build project
         run: npm run build
         env:
@@ -48,14 +44,14 @@ jobs:
           docker push ${{ env.DOCKERHUB_REPOSITORY }}:$COMMIT_TAG
           docker push ${{ env.DOCKERHUB_REPOSITORY }}:latest
 
-      - name: Upload files to VPS
+      - name: Upload docker-compose to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT || 22 }}
-          source: "docker-compose.yaml,.env"
+          source: "docker-compose.yaml"
           target: ${{ env.PROJECT_PATH }}/
           strip_components: 0
 
@@ -71,9 +67,6 @@ jobs:
             echo "Starting deployment..."
             mkdir -p $PROJECT_PATH
             cd $PROJECT_PATH
-            echo "Current directory: $(pwd)"
-            echo "Listing files in project path:"
-            ls -la
             if [ ! -f docker-compose.yaml ]; then
               echo "ERROR: docker-compose.yaml not found in $PROJECT_PATH"
               exit 1

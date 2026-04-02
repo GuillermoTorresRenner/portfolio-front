@@ -1,37 +1,36 @@
-import React from "react";
 import { useLanguage } from "~/contexts/LanguageContext";
 
-const LanguageSelector: React.FC = () => {
+export default function LanguageSelector() {
   const { currentLanguage, setLanguage } = useLanguage();
 
-  const handleLanguageChange = (language: "en" | "es") => {
-    setLanguage(language);
-  };
-
   return (
-    <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full border border-white/20 overflow-hidden">
-      <button
-        onClick={() => handleLanguageChange("en")}
-        className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${
-          currentLanguage === "en"
-            ? "bg-cyan-400 text-gray-900"
-            : "text-gray-300 hover:text-white hover:bg-white/10"
-        }`}
-      >
-        EN
-      </button>
-      <button
-        onClick={() => handleLanguageChange("es")}
-        className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${
-          currentLanguage === "es"
-            ? "bg-cyan-400 text-gray-900"
-            : "text-gray-300 hover:text-white hover:bg-white/10"
-        }`}
-      >
-        ES
-      </button>
+    <div className="z-50 rounded-full border border-cyan-400/30 bg-gray-900/80 p-1 backdrop-blur">
+      <div className="flex items-center gap-1">
+        <button
+          type="button"
+          onClick={() => setLanguage("es")}
+          className={`rounded-full px-3 py-1 text-sm font-semibold transition-colors ${
+            currentLanguage === "es"
+              ? "bg-cyan-400 text-gray-950"
+              : "text-gray-300 hover:bg-gray-800"
+          }`}
+          aria-label="Cambiar idioma a español"
+        >
+          ES
+        </button>
+        <button
+          type="button"
+          onClick={() => setLanguage("en")}
+          className={`rounded-full px-3 py-1 text-sm font-semibold transition-colors ${
+            currentLanguage === "en"
+              ? "bg-cyan-400 text-gray-950"
+              : "text-gray-300 hover:bg-gray-800"
+          }`}
+          aria-label="Switch language to English"
+        >
+          EN
+        </button>
+      </div>
     </div>
   );
-};
-
-export default LanguageSelector;
+}

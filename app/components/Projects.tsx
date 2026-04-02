@@ -19,7 +19,7 @@ const Projects = ({ projects }: ProjectsProps) => {
 
   return (
     <section id="proyectos" className="min-h-screen flex items-center py-20">
-      <div className="max-w-4xl">
+      <div className="w-full max-w-3xl">
         <h2 className="text-4xl font-bold mb-12 gradient-text-neon">
           {currentLanguage === "es"
             ? "Proyectos Destacados"
