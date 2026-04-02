@@ -1,6 +1,6 @@
-import { getContent } from "./api";
+import { getContent, type Locale } from "./api";
 
 export const getProjectsData = (locale: string = "en") => {
-  const content = getContent(locale as "es" | "en");
+  const content = getContent(locale as Locale);
   return content.projects || [];
 };

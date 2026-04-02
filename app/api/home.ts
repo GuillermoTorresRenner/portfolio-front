@@ -1,5 +1,5 @@
-import { getContent } from "./api";
+import { getContent, type Locale } from "./api";
 
 export const getHomeData = (locale: string = "en") => {
-  return getContent(locale as "es" | "en");
+  return getContent(locale as Locale);
 };

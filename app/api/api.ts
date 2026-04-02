@@ -1,12 +1,8 @@
-import content from "../../content.json";
-import type { HomeData, Project } from "~/types";
+import { getContent as getContentFromFiles, type Locale } from "~/content";
+import type { HomeData } from "~/types";
 
-type Locale = "es" | "en";
+export type { Locale };
 
-const data = content as {
-  home: Record<Locale, HomeData & { projects: Project[] }>;
-};
-
-export function getContent(locale: Locale = "en") {
-  return data.home[locale] || data.home.en;
+export function getContent(locale: Locale = "en"): HomeData {
+  return getContentFromFiles(locale);
 }

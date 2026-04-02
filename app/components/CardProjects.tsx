@@ -10,7 +10,7 @@ interface CardProjectsProps {
 
 const CardProjects = ({ project, textGradient }: CardProjectsProps) => {
   return (
-    <div className="mb-16">
+    <div className="mb-16 w-full">
       {/* Timeline dot and line */}
       <div className="flex items-start">
         <div className="flex flex-col items-center mr-8">
