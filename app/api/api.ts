@@ -9,6 +9,8 @@ if (!BASE_API_URL) {
   throw new Error("VITE_BASE_API_URL environment variable is required");
 }
 
+export type { Locale };
+
 export function getContent(locale: Locale = "en"): HomeData {
   return getContentFromFiles(locale);
 }
