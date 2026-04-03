@@ -1,18 +1,13 @@
-FROM node:20-alpine
+FROM nginx:alpine
 
-WORKDIR /app
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy package files
-COPY package*.json ./
-
-# Install production dependencies only
-RUN npm ci --only=production
-
-# Copy built application from CI/CD pipeline
-COPY build ./build
+# Copy built client application from CI/CD pipeline
+COPY build/client /usr/share/nginx/html
 
 # Expose port
 EXPOSE 3000
 
-# Start with React Router server (SSR enabled)
-CMD ["npm", "start"]
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
