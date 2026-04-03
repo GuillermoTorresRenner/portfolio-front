@@ -4,6 +4,7 @@ import Aside from "~/components/Aside";
 import AboutMe from "~/components/AboutMe";
 import Experience from "~/components/Experience";
 import Projects from "~/components/Projects";
+import LanguageSelector from "~/components/LanguageSelector";
 import { getHomeData } from "~/api/home";
 import Techs from "~/components/Techs";
 import type { HomeData } from "~/types";
@@ -25,6 +26,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative">
+      {/* Language Selector - Fixed in top right corner */}
+      <div className="fixed top-6 right-6 z-50">
+        <LanguageSelector />
+      </div>
+
       {/* Aside - Responsivo: arriba en móvil/tablet, lateral en desktop */}
       <div className="lg:fixed lg:top-20 lg:left-20 lg:w-2/6 lg:h-screen w-full">
         <Aside

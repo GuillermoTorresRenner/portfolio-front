@@ -1,16 +1,48 @@
 import { getContent as getContentFromFiles, type Locale } from "~/content";
-import type { HomeData } from "~/types";
-
-// Get the base API URL from environment variables
-const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
-
-// Throw error if no API URL is configured
-if (!BASE_API_URL) {
-  throw new Error("VITE_BASE_API_URL environment variable is required");
-}
+import type { HomeData, Social } from "~/types";
 
 export type { Locale };
 
 export function getContent(locale: Locale = "en"): HomeData {
-  return getContentFromFiles(locale);
+  const content = getContentFromFiles(locale);
+
+  // Construir el array de socials desde las propiedades individuales
+  const socials: Social[] = [];
+
+  if (content.github) {
+    socials.push({
+      id: 1,
+      name: "GitHub",
+      url: content.github,
+    });
+  }
+
+  if (content.linkedin) {
+    socials.push({
+      id: 2,
+      name: "LinkedIn",
+      url: content.linkedin,
+    });
+  }
+
+  if (content.email) {
+    socials.push({
+      id: 3,
+      name: "Email",
+      url: `mailto:${content.email}`,
+    });
+  }
+
+  if (content.youtube) {
+    socials.push({
+      id: 4,
+      name: "YouTube",
+      url: content.youtube,
+    });
+  }
+
+  return {
+    ...content,
+    socials,
+  };
 }

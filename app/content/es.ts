@@ -3,24 +3,31 @@ import type { HomeData } from "~/types";
 /**
  * Contenido del portfolio en Español
  */
+
 export const esContent: HomeData = {
-  // Información personal
+  //******************************************** Información personal *****************************************************************
   name: "Guillermo Torres Renner",
   subtitle: "Desarrollador Full Stack | Devops | Arquitecto",
   description:
     "Siempre desarrollando y desarrollándome. Enfocado en la creación de sistemas escalables y eficientes.",
+  position: "Desarrollador Full Stack | DevOps | Arquitecto",
+  location: "Temuco, Chile",
   email: "contacto@guillermotorresdev.com",
-  linkedin: "https://www.linkedin.com/in/guillermotorres-fullstackdeveloper",
+  phone: "+56 9 8765 4321",
+  linkedin: "https://www.linkedin.com/in/guillermotorres-fullstackdeveloper/",
   github: "https://github.com/GuillermoTorresRenner",
+  youtube: "https://www.youtube.com/@guillermo_torres_dev",
 
-  // Sobre mí (soporta Markdown)
+  //******************************************** Sobre mí *****************************************************************
+
   about: `Soy Guillermo Torres, desarrollador fullstack, maker autodidacta y explorador digital. Combino programación, electrónica y creatividad para diseñar soluciones tecnológicas que resuelvan problemas reales. Trabajo con tecnologías como NestJS, Vue/Quasar, IA, Docker y ESP32, n8n, integrando software y hardware para proyectos que van desde sistemas de control de acceso hasta plataformas de gestión para municipios, clínicas o empresas.
 
 Además de escribir código, diseño circuitos, gestiono despliegues con CI/CD, organizo mis ideas en Obsidian y exploro tecnologías emergentes con mentalidad DevOps. Me apasiona automatizar procesos, optimizar flujos y construir herramientas que empoderen a las personas y sus proyectos.
 
 Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacionales, con enfoque humano, técnico y estético. Mi trabajo es una extensión de mi forma de estar en el mundo: precisa, creativa y profundamente conectada con el propósito.`,
 
-  // Tecnologías
+  //******************************************** Tecnologías *****************************************************************
+
   technologies: [
     { id: 1, name: "TypeScript", url: "https://www.typescriptlang.org" },
     { id: 2, name: "Python", url: "https://python.org" },
@@ -53,7 +60,7 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
     { id: 21, name: "Arduino", url: "https://www.arduino.cc" },
   ],
 
-  // Experiencia laboral
+  //******************************************** Experiencia *****************************************************************
   experiences: [
     {
       id: 1,
@@ -126,51 +133,64 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
     },
   ],
 
-  // Proyectos
+  //******************************************** Proyectos*****************************************************************
+  /**
+   
+   * Sectra
+   * Municipalidad Illapel
+   * Subsecretaría de energía
+   * Lobarnechea en imágenes
+   * DGMN
+   * Adened
+   * 
+   * Otaria
+   * Simón V
+   * Theus
+   */
   projects: [
     {
       id: 1,
       documentId: "proj-001",
-      title: "E-Commerce Platform",
+      title: "Otaria",
       exerpt:
-        "Plataforma de comercio electrónico completa con carrito de compras, pagos y panel de administración.",
-      description: `Una plataforma de comercio electrónico moderna construida con **React** y **Node.js**.
+        "Plataforma para calgulo de huellas de carbono y documentación para obtener certificaciones de sostenibilidad.",
+      description: `**Otaria** es una plataforma de subscripciones *multi-tenant* que brinda la posibilidad a los clientes de poder entidades de negocio con sus fuentes de emisión de CO2 asociado a una extensa base de datos de Factores emisión con objeto de registrar y trazar las emisiones de gases de efecto invernadero como base de elaboración de planes ambientales de mejora continua generando documentacion necesaria para obtener certificaciones de sostenibilidad.
 
 ## Características principales
 
-- Catálogo de productos con filtrado y búsqueda
-- Carrito de compras con persistencia
-- Integración con pasarela de pagos
-- Panel de administración para gestión de productos
-- Diseño responsive y accesible`,
-      slug: "e-commerce-platform",
-      code_url: "https://github.com/ejemplo/ecommerce",
-      demo_url: "https://ecommerce-demo.ejemplo.com",
+- Multitenant: Cada cliente tiene su propia instancia aislada para gestionar sus datos de emisiones.
+- Base de datos de factores de emisión: Amplia base de datos con factores de emisión para diferentes actividades y sectores.
+- Cálculo automático de huella de carbono: La plataforma calcula automáticamente la huella de carbono basada en los datos ingresados por el cliente.
+- Generación de reportes: Genera reportes detallados para ayudar a los clientes a entender su impacto ambiental y planificar acciones de mejora.
+- Documentación para certificaciones: Proporciona la documentación necesaria para que los clientes puedan obtener certificaciones de sostenibilidad reconocidas internacionalmente.`,
+      slug: "otaria",
+      demo_url: "https://huellacarbono.otaria.io/",
       order: 1,
       is_main: true,
       technologies: [
-        { id: 1, name: "React" },
-        { id: 3, name: "Node.js" },
-        { id: 7, name: "PostgreSQL" },
-        { id: 6, name: "Docker" },
+        { id: 1, name: "Quasar" },
+        { id: 2, name: "Expres" },
+        { id: 3, name: "PostgreSQL" },
+        { id: 4, name: "Docker" },
+        { id: 5, name: "Redis" },
       ],
       image: [
         {
           id: 1,
-          url: "/images/projects/ecommerce-hero.png",
-          alternativeText: "E-Commerce Platform - Vista principal",
+          url: "/images/projects/otaria1.png",
+          alternativeText: "Otaria - Vista principal",
           formats: {
-            thumbnail: { url: "/images/projects/ecommerce-hero-thumb.png" },
-            small: { url: "/images/projects/ecommerce-hero-small.png" },
+            thumbnail: { url: "/images/projects/otaria1-thumb.png" },
+            small: { url: "/images/projects/otaria1.png" },
           },
         },
         {
           id: 2,
-          url: "/images/projects/ecommerce-dashboard.png",
-          alternativeText: "E-Commerce Platform - Dashboard",
+          url: "/images/projects/otaria2.gif",
+          alternativeText: "Otaria - Dashboard",
           formats: {
             thumbnail: {
-              url: "/images/projects/ecommerce-dashboard-thumb.png",
+              url: "/images/projects/otaria2.gif",
             },
           },
         },
@@ -245,13 +265,5 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
         },
       ],
     },
-  ],
-
-  // Redes sociales
-  socials: [
-    { id: 1, name: "GitHub", url: "https://github.com/ejemplo" },
-    { id: 2, name: "LinkedIn", url: "https://linkedin.com/in/ejemplo" },
-    { id: 3, name: "Email", url: "mailto:contacto@ejemplo.com" },
-    { id: 4, name: "YouTube", url: "https://youtube.com/@ejemplo" },
   ],
 };

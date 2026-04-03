@@ -1,6 +1,7 @@
 import React from "react";
 import type { Route } from "./+types/projects";
 import CardProjects from "~/components/CardProjects";
+import LanguageSelector from "~/components/LanguageSelector";
 import { getProjectData } from "~/api/project";
 import type { ProjectItem } from "~/types";
 import { useLanguage } from "~/contexts/LanguageContext";
@@ -18,6 +19,11 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      {/* Language Selector - Fixed in top right corner */}
+      <div className="fixed top-6 right-6 z-50">
+        <LanguageSelector />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-6xl mx-auto">
           {/* Header */}

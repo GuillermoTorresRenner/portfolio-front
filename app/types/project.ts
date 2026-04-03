@@ -66,12 +66,16 @@ export interface HomeData {
   name: string;
   subtitle: string;
   description: string;
+  position: string;
+  location: string;
   about: string;
   email: string;
+  phone: string;
   linkedin: string;
   github: string;
+  youtube: string;
   technologies: Technology[];
   projects: ProjectItem[];
   experiences: ExperienceItem[];
-  socials: Social[];
+  socials?: Social[];
 }

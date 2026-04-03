@@ -2,6 +2,7 @@ import React from "react";
 import type { Route } from "./+types/project.$id";
 import { useParams, Link } from "react-router";
 import { getSingleProjectData } from "~/api/project";
+import LanguageSelector from "~/components/LanguageSelector";
 import RichText from "~/components/RichText";
 import TechChips from "~/components/TechChips";
 import { HiArrowLeft, HiExternalLink, HiCode, HiPlay } from "react-icons/hi";
@@ -49,6 +50,11 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      {/* Language Selector - Fixed in top right corner */}
+      <div className="fixed top-6 right-6 z-50">
+        <LanguageSelector />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-4xl mx-auto">
           {/* Navegación hacia atrás */}

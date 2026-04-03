@@ -12,9 +12,10 @@ export const enContent: HomeData = {
   position: "Full Stack Developer",
   location: "Santiago, Chile",
   email: "contact@example.com",
-  phone: "+56 9 1234 5678",
+  phone: "+56 9 8765 4321",
   linkedin: "https://linkedin.com/in/example",
   github: "https://github.com/example",
+  youtube: "https://youtube.com/@example",
 
   // About me (supports Markdown)
   about: `I'm a **Full Stack Developer** with experience in designing and developing modern web applications.
@@ -202,13 +203,5 @@ I'm always looking to learn new tools and improve my skills to deliver high-qual
         },
       ],
     },
-  ],
-
-  // Social networks
-  socials: [
-    { id: 1, name: "GitHub", url: "https://github.com/example" },
-    { id: 2, name: "LinkedIn", url: "https://linkedin.com/in/example" },
-    { id: 3, name: "Email", url: "mailto:contact@example.com" },
-    { id: 4, name: "YouTube", url: "https://youtube.com/@example" },
   ],
 };
