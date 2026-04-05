@@ -10,12 +10,6 @@ export interface ProjectImage {
   id: number;
   url: string;
   alternativeText?: string;
-  formats?: {
-    small?: { url: string };
-    medium?: { url: string };
-    large?: { url: string };
-    thumbnail?: { url: string };
-  };
 }
 
 export interface Project {
@@ -23,7 +17,6 @@ export interface Project {
   documentId: string;
   title: string;
   description: string;
-  slug: string;
   demo_url?: string;
   code_url?: string;
   youtube_url?: string;
@@ -40,7 +33,6 @@ export interface ProjectItem {
   title: string;
   exerpt: string;
   description: string;
-  slug: string;
   code_url?: string;
   demo_url?: string;
   youtube_url?: string;

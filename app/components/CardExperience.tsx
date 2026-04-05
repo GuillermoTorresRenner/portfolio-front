@@ -16,7 +16,6 @@ interface ExperienceItem {
   end_date: string;
   description: string;
   url?: string;
-  slug: string;
   order: number;
   technologies?: Technology[];
 }

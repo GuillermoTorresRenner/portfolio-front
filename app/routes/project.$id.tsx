@@ -93,13 +93,15 @@ export default function ProjectDetail() {
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-950/50 via-transparent to-transparent" />
 
                   {/* Badge decorativo */}
-                  <div className="absolute top-6 left-6">
-                    <div className="bg-cyan-400/20 backdrop-blur-sm rounded-full px-4 py-2 border border-cyan-400/30">
-                      <span className="text-cyan-300 text-sm font-medium">
-                        {currentLanguage === "es" ? "Proyecto Destacado" : "Featured Project"}
-                      </span>
+                  {project.is_main && (
+                    <div className="absolute top-6 left-6">
+                      <div className="bg-cyan-400/20 backdrop-blur-sm rounded-full px-4 py-2 border border-cyan-400/30">
+                        <span className="text-cyan-300 text-sm font-medium">
+                          {currentLanguage === "es" ? "Proyecto Destacado" : "Featured Project"}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             )}

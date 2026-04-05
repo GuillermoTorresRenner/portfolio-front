@@ -17,62 +17,193 @@ Un portfolio moderno desarrollado con React Router v7, TypeScript y TailwindCSS,
 
 ## 📝 Gestión de Contenido
 
-Todo el contenido del portfolio se define en el archivo **`content.json`** en la raíz del proyecto. No se necesita backend ni base de datos.
+Todo el contenido del portfolio se define en archivos TypeScript (`app/content/es.ts` y `app/content/en.ts`). No se necesita backend ni base de datos. El contenido se organiza en la interfaz `HomeData` con los siguientes atributos:
 
-### Estructura del content.json
+### Estructura Principal (HomeData)
 
-```json
+Estos son los atributos raíz que definen la información general del portfolio:
+
+| Atributo | Tipo | Requerido | Descripción |
+|----------|------|-----------|-------------|
+| `name` | `string` | ✅ | Nombre completo del desarrollador |
+| `subtitle` | `string` | ✅ | Subtítulo o cargo principal (ej: "Full Stack Developer") |
+| `description` | `string` | ✅ | Breve descripción de una línea |
+| `position` | `string` | ✅ | Posición/cargo detallado |
+| `location` | `string` | ✅ | Ubicación geográfica |
+| `about` | `string` | ✅ | Texto largo (soporta **Markdown**) sobre ti |
+| `email` | `string` | ✅ | Email de contacto |
+| `phone` | `string` | ✅ | Número de teléfono |
+| `linkedin` | `string` | ✅ | URL del perfil de LinkedIn |
+| `github` | `string` | ✅ | URL del perfil de GitHub |
+| `youtube` | `string` | ✅ | URL del canal de YouTube |
+| `technologies` | `Technology[]` | ✅ | Array de tecnologías que dominas |
+| `experiences` | `ExperienceItem[]` | ✅ | Array de experiencias laborales |
+| `projects` | `ProjectItem[]` | ✅ | Array de proyectos destacados |
+| `socials` | `Social[]` | ❌ | Array de redes sociales adicionales |
+
+### Atributos de Tecnología (Technology)
+
+Cada tecnología en tu portafolio se define así:
+
+| Atributo | Tipo | Requerido | Descripción |
+|----------|------|-----------|-------------|
+| `id` | `number` | ✅ | ID único de la tecnología |
+| `name` | `string` | ✅ | Nombre de la tecnología (ej: "React", "Python") |
+| `url` | `string` | ❌ | URL oficial de la tecnología |
+
+**Ejemplo:**
+```typescript
 {
-  "home": {
-    "es": {
-      "name": "Tu Nombre",
-      "subtitle": "Tu Cargo",
-      "description": "Breve descripción",
-      "about": "Texto en **Markdown** sobre ti",
-      "technologies": [...],
-      "experiences": [...],
-      "projects": [...],
-      "socials": [...]
-    },
-    "en": {
-      // Misma estructura en inglés
-    }
-  }
+  id: 1,
+  name: "TypeScript",
+  url: "https://www.typescriptlang.org"
 }
 ```
 
-### Imágenes
+### Atributos de Experiencia Laboral (ExperienceItem)
 
-Las imágenes se almacenan en `public/images/` y se referencian en `content.json` con rutas relativas:
+Define tu historial profesional con estos campos:
 
-```json
+| Atributo | Tipo | Requerido | Descripción |
+|----------|------|-----------|-------------|
+| `id` | `number` | ✅ | ID único de la experiencia |
+| `documentId` | `string` | ✅ | ID único como string (ej: "exp-001") |
+| `position` | `string` | ✅ | Cargo/posición que ocupaste |
+| `company` | `string` | ✅ | Nombre de la empresa |
+| `start_date` | `string` | ✅ | Fecha de inicio (ej: "Octubre 2025") |
+| `end_date` | `string` | ✅ | Fecha de fin (ej: "Presente") |
+| `description` | `string` | ✅ | Descripción de responsabilidades (soporta **Markdown**) |
+| `url` | `string` | ❌ | URL de la página de la empresa |
+| `order` | `number` | ✅ | Orden de aparición (1, 2, 3...) |
+
+**Ejemplo:**
+```typescript
 {
-  "image": [
+  id: 1,
+  documentId: "exp-001",
+  position: "Senior Full Stack Developer | DevOps",
+  company: "Lanek",
+  start_date: "October 2025",
+  end_date: "Present",
+  description: "- Implemented VPS solutions\n- Developed CI/CD pipelines",
+  url: "https://www.lanek.cl/",
+  order: 1
+}
+```
+
+### Atributos de Proyecto (ProjectItem)
+
+Define tus proyectos destacados y portafolio:
+
+| Atributo | Tipo | Requerido | Descripción |
+|----------|------|-----------|-------------|
+| `id` | `number` | ✅ | ID único del proyecto |
+| `documentId` | `string` | ✅ | ID único como string (ej: "otaria") |
+| `title` | `string` | ✅ | Nombre del proyecto |
+| `exerpt` | `string` | ✅ | Descripción corta (1-2 líneas) |
+| `description` | `string` | ✅ | Descripción completa (soporta **Markdown**) |
+| `demo_url` | `string` | ❌ | URL para acceder a la demo del proyecto |
+| `code_url` | `string` | ❌ | URL del repositorio de código |
+| `youtube_url` | `string` | ❌ | URL de un video del proyecto en YouTube |
+| `order` | `number` | ✅ | Orden de aparición (1, 2, 3...) |
+| `is_main` | `boolean` | ✅ | Si es true, muestra badge "Proyecto Destacado" |
+| `technologies` | `Technology[]` | ❌ | Array de tecnologías usadas |
+| `image` | `ProjectImage[]` | ❌ | Array de imágenes del proyecto |
+
+**Ejemplo:**
+```typescript
+{
+  id: 1,
+  documentId: "otaria",
+  title: "Otaria",
+  exerpt: "Platform for carbon footprint calculation",
+  description: "**Otaria** is a multi-tenant platform...",
+  demo_url: "https://huellacarbono.otaria.io/",
+  order: 1,
+  is_main: true,
+  technologies: [
+    { id: 1, name: "React" },
+    { id: 2, name: "TypeScript" }
+  ],
+  image: [
     {
-      "id": 1,
-      "url": "/images/projects/mi-proyecto.png",
-      "alternativeText": "Descripción de la imagen"
+      id: 1,
+      url: "/images/projects/otaria/otaria1.png",
+      alternativeText: "Otaria - Main view"
     }
   ]
 }
 ```
 
-Estructura recomendada de carpetas de imágenes:
+### Atributos de Imagen (ProjectImage)
 
+Las imágenes en un proyecto se definen así:
+
+| Atributo | Tipo | Requerido | Descripción |
+|----------|------|-----------|-------------|
+| `id` | `number` | ✅ | ID único de la imagen |
+| `url` | `string` | ✅ | Ruta de la imagen (debe comenzar con `/images/`) |
+| `alternativeText` | `string` | ❌ | Texto alternativo para accesibilidad |
+
+### Gestión de Imágenes
+
+Las imágenes se almacenan en `public/images/` y se referencian con rutas relativas:
+
+**Estructura recomendada:**
 ```
 public/
 └── images/
     └── projects/
-        ├── proyecto1-hero.png
-        ├── proyecto1-dashboard.png
-        └── proyecto2-hero.png
+        ├── otaria/
+        │   ├── otaria1.png
+        │   └── otaria2.gif
+        ├── simonv/
+        │   ├── simonv.png
+        │   └── simonv.gif
+        └── theus/
+            └── theus.png
 ```
 
-### Agregar un nuevo proyecto
+**Referencia en content:**
+```typescript
+image: [
+  {
+    id: 1,
+    url: "/images/projects/otaria/otaria1.png",
+    alternativeText: "Otaria - Main view"
+  }
+]
+```
 
-1. Añade las imágenes del proyecto en `public/images/projects/`
-2. Agrega la entrada del proyecto en `content.json` dentro de `home.es.projects` y `home.en.projects`
-3. Haz commit y push a `main` para desplegar automáticamente
+### Cómo agregar un nuevo proyecto
+
+1. **Crea la carpeta de imágenes** en `public/images/projects/tu-proyecto/`
+2. **Agrega tus imágenes** (PNG, GIF o JPG)
+3. **Edita `app/content/es.ts`** y agrega el proyecto:
+   ```typescript
+   {
+     id: 10,
+     documentId: "nuevo-proyecto",
+     title: "Mi Nuevo Proyecto",
+     exerpt: "Descripción corta...",
+     description: "Descripción completa...",
+     demo_url: "https://demo.ejemplo.com",
+     order: 10,
+     is_main: true,
+     technologies: [...],
+     image: [...]
+   }
+   ```
+4. **Traduce a inglés** en `app/content/en.ts` con el mismo `documentId`
+5. **Haz commit y push** a `main` para desplegar automáticamente
+
+### Notas Importantes
+
+- ⚠️ El `documentId` debe ser **único** en todo el portfolio y se usa para las rutas
+- 📝 Los campos `description` soportan **Markdown** (bold, italic, listas, etc.)
+- 🎯 Solo los proyectos con `is_main: true` muestran el badge "Destacado"
+- 🔢 El `order` determina el orden de aparición (menor número = aparece primero)
+- 📸 Las rutas de imágenes deben comenzar con `/images/` (sin `public/`)
 
 ## 🛠️ Desarrollo
 

@@ -134,23 +134,11 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
   ],
 
   //******************************************** Proyectos*****************************************************************
-  /**
-   
-   * Sectra
-   * Municipalidad Illapel
-   * Subsecretaría de energía
-   * Lobarnechea en imágenes
-   * DGMN
-   * Adened
-   * 
-   * Otaria
-   * Simón V
-   * Theus
-   */
+
   projects: [
     {
       id: 1,
-      documentId: "proj-001",
+      documentId: "otaria",
       title: "Otaria",
       exerpt:
         "Plataforma para calgulo de huellas de carbono y documentación para obtener certificaciones de sostenibilidad.",
@@ -163,7 +151,6 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
 - Cálculo automático de huella de carbono: La plataforma calcula automáticamente la huella de carbono basada en los datos ingresados por el cliente.
 - Generación de reportes: Genera reportes detallados para ayudar a los clientes a entender su impacto ambiental y planificar acciones de mejora.
 - Documentación para certificaciones: Proporciona la documentación necesaria para que los clientes puedan obtener certificaciones de sostenibilidad reconocidas internacionalmente.`,
-      slug: "otaria",
       demo_url: "https://huellacarbono.otaria.io/",
       order: 1,
       is_main: true,
@@ -177,80 +164,76 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
       image: [
         {
           id: 1,
-          url: "/images/projects/otaria1.png",
+          url: "/images/projects/otaria/otaria1.png",
           alternativeText: "Otaria - Vista principal",
-          formats: {
-            thumbnail: { url: "/images/projects/otaria1-thumb.png" },
-            small: { url: "/images/projects/otaria1.png" },
-          },
         },
         {
           id: 2,
-          url: "/images/projects/otaria2.gif",
+          url: "/images/projects/otaria/otaria2.gif",
           alternativeText: "Otaria - Dashboard",
-          formats: {
-            thumbnail: {
-              url: "/images/projects/otaria2.gif",
-            },
-          },
         },
       ],
     },
     {
       id: 2,
-      documentId: "proj-002",
-      title: "Task Manager App",
+      documentId: "simonv",
+      title: "SIMON-V (Sistema de Monitoreo de Voz)",
       exerpt:
-        "Aplicación de gestión de tareas con colaboración en tiempo real y notificaciones.",
-      description: `Aplicación de gestión de tareas construida con **React** y **TypeScript**.
+        "Sistema dirigido a profesionales de la clínica Santa María para registrar diferentes análisis de problemas de la voz en pacientes del hospital.",
+      description: `Simon-v es un sistema usado para tomar muestras de pacientes con problemas comunes originados por esfuerzo vocal, por lo que está dirigidos a personal de *call centers*, *profesores*, locutores* y *cantantes*.
 
 ## Funcionalidades
 
-- Tableros tipo Kanban
-- Colaboración en tiempo real
-- Notificaciones push
-- Reportes de productividad
-- Integración con calendario`,
-      slug: "task-manager",
-      code_url: "https://github.com/ejemplo/task-manager",
-      demo_url: "https://tasks-demo.ejemplo.com",
-      youtube_url: "https://youtube.com/watch?v=ejemplo",
+- Multitenant: Cada cliente tiene su propia instancia aislada para gestionar sus datos de pacientes.
+- Integracioń con otoscopios y sondas laríngeas.
+- Formularios de diagnóstico y seguimiento de pacientes.
+- Almacenamiento seguro de datos de pacientes.
+- Generación de reportes para profesionales de la salud.
+- Notificaciones push.
+- Módulo de estadísticas.
+- Módulo de análisis de frecuencias fundamentales de la voz.`,
+      demo_url: "https://simonv.lanek.cloud/",
       order: 2,
       is_main: true,
       technologies: [
         { id: 1, name: "React" },
         { id: 2, name: "TypeScript" },
-        { id: 5, name: "TailwindCSS" },
+        { id: 3, name: "NestJS" },
+        { id: 4, name: "Python" },
+        { id: 5, name: "Redis" },
+        { id: 6, name: "Postgres" },
       ],
       image: [
         {
-          id: 3,
-          url: "/images/projects/taskmanager-hero.png",
-          alternativeText: "Task Manager - Vista principal",
-          formats: {
-            thumbnail: { url: "/images/projects/taskmanager-hero-thumb.png" },
-          },
+          id: 1,
+          url: "/images/projects/simonv/simonv.png",
+          alternativeText: "SIMON-V - Vista principal",
+        },
+        {
+          id: 2,
+          url: "/images/projects/simonv/simonv.gif",
+          alternativeText: "SIMON-V - Dashboard",
         },
       ],
     },
     {
       id: 3,
-      documentId: "proj-003",
-      title: "Portfolio Personal",
+      documentId: "theus",
+      title: "Theus",
       exerpt:
-        "Sitio web portfolio desarrollado con React Router v7 y TailwindCSS.",
-      description: `Mi portfolio personal, construido con las últimas tecnologías web.
+        "Plataforma Multi-tenant para gestión de envíos de contenedores marítimos, con integración a sistemas de terceros para trazabilidad, monitoreo y gestión de documentación aduanera.",
+      description: `Theus es una plataforma diseñada para la gestión eficiente de envíos de contenedores marítimos, ofreciendo integración con sistemas de terceros para asegurar la trazabilidad y el manejo adecuado de la documentación.
 
-## Stack
-
-- **React Router v7** con SSR
-- **TailwindCSS** para estilos
-- **Docker** para despliegue
-- **GitHub Actions** para CI/CD`,
-      slug: "portfolio",
+## Funcionalidades
+- Multitenant: Cada cliente tiene su propia instancia aislada para gestionar sus envíos.
+- Integración con sistemas de terceros: Conexión con APIs de navieras, aduanas y proveedores logísticos para obtener información en tiempo real sobre el estado de los envíos.
+- Gestión de documentación aduanera: Almacenamiento y gestión de toda la documentación necesaria para el proceso aduanero, facilitando su acceso y organización.
+- Trazabilidad en tiempo real: Monitoreo del estado de los envíos desde la salida hasta la llegada, con notificaciones automáticas sobre cambios de estado o incidencias.
+- Dashboard de gestión: Interfaz intuitiva para la gestión de envíos, visualización de datos y generación de reportes personalizados.`,
+      demo_url: "https://theus.lanek.cloud/",
       code_url: "https://github.com/ejemplo/portfolio",
       order: 3,
-      is_main: false,
+      is_main: true,
       technologies: [
         { id: 1, name: "React" },
         { id: 2, name: "TypeScript" },
@@ -259,9 +242,262 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
       ],
       image: [
         {
-          id: 4,
+          id: 1,
           url: "/images/projects/portfolio-hero.png",
           alternativeText: "Portfolio - Vista principal",
+        },
+      ],
+    },
+    {
+      id: 4,
+      documentId: "sibne",
+      title: "SIBNE (Sistema de Información del balance nacional de energía)",
+      exerpt:
+        "Plataforma solicitada por la Subsecretaríade de energía de Chile para la gestión de datos energéticos de empresas del sector público y privado paa calcular los consumos energéticos nacionales",
+      description: `Plataforma solicitada por la **Subsecretaríade de energía de Chile** para la gestión de datos energéticos de empresas del sector público y privado paa calcular los consumos energéticos nacionales.
+
+## Funcionalidades
+- Multitenant: Cada cliente tiene su propia instancia con diversos roles de accesos para sus equipos de trabajo.
+- Integracion con meio de autenticación de **ClaveUnica** para clientes.
+- Formularios de ingreso de datos energéticos con validaciones y cálculos automáticos.
+- Almacenamiento seguro de datos energéticos.
+- Generación de reportes para la subsecretaría de energía.
+- Notificaciones push para clientes.
+- Módulo de estadísticas y análisis de datos energéticos.
+- Módulo de Admin y gestión de contenidos y configuraciones.
+- Modulo ETL para migrar datos de sistemas legados a la plataforma.
+
+
+
+
+`,
+      demo_url: "https://bne.minenergia.cl/",
+      order: 4,
+      is_main: true,
+      technologies: [
+        { id: 1, name: "React" },
+        { id: 2, name: "TypeScript" },
+        { id: 3, name: "Nest JS" },
+        { id: 6, name: "Python" },
+        { id: 7, name: "TailwindCSS" },
+        { id: 8, name: "Docker" },
+      ],
+      image: [
+        {
+          id: 1,
+          url: "/images/projects/sibne/sibne1.png",
+          alternativeText: "Sibne - Vista principal",
+        },
+      ],
+    },
+    {
+      id: 5,
+      documentId: "sectra",
+      title: "Sectra",
+      exerpt:
+        "Sitio web desarrollado en wordpress para SECTRA (Programam de vialidad y transporte) ",
+      description: `SEctra es un sitio web gubernamental (Chile) desarrollado en WordPress para el programa de vialidad y transporte, con el objetivo de proporcionar información actualizada sobre proyectos de infraestructura vial, políticas de transporte y servicios relacionados.
+
+## Funcionalidades
+- Multitenant: Cada cliente tiene su propia instancia aislada para gestionar sus envíos.
+- Integración con sistemas de terceros: Conexión con APIs de navieras, aduanas y proveedores logísticos para obtener información en tiempo real sobre el estado de los envíos.
+- Gestión de documentación aduanera: Almacenamiento y gestión de toda la documentación necesaria para el proceso aduanero, facilitando su acceso y organización.
+- Trazabilidad en tiempo real: Monitoreo del estado de los envíos desde la salida hasta la llegada, con notificaciones automáticas sobre cambios de estado o incidencias.
+- Dashboard de gestión: Interfaz intuitiva para la gestión de envíos, visualización de datos y generación de reportes personalizados.`,
+      demo_url: "https://www.sectra.gob.cl/",
+      order: 5,
+      is_main: false,
+      technologies: [
+        { id: 1, name: "Wordpress" },
+        { id: 2, name: "Elementor" },
+        { id: 3, name: "Docker" },
+      ],
+      image: [
+        {
+          id: 1,
+          url: "/images/projects/sectra/sectra1.png",
+          alternativeText: "Sectra - Vista principal",
+        },
+        {
+          id: 2,
+          url: "/images/projects/sectra/sectra1.gif",
+          alternativeText: "Sectra - demo",
+        },
+      ],
+    },
+    {
+      id: 6,
+      documentId: "adened",
+      title: "Adened",
+      exerpt:
+        "Plataforma solicitada por el Ministerio de Salud de Chile para el registro y gestión de casos de defunciones por enfermedades respiratorias en Chile.",
+      description: `Adened es una plataforma diseñado para el **Ministerio de Salud de Chile** para la gestión eficiente de casos de defunciones por enfermedades respiratorias en Chile, ofreciendo integración con sistemas de terceros para asegurar la trazabilidad y el manejo adecuado de la información.
+
+## Funcionalidades
+- MVC: Arquitectura basada en el patrón Modelo-Vista-Controlador.
+- Integración con sistemas de terceros: Conexión con APIs de sistemas de salud y bases de datos gubernamentales para obtener información en tiempo real sobre los casos de defunciones.
+- RBAC: Sistema de control de acceso basado en roles para gestionar permisos de usuarios.
+- Trazabilidad en tiempo real: Monitoreo del estado de los casos desde la notificación hasta la resolución, con notificaciones automáticas sobre cambios de estado o incidencias.
+- Dashboard de gestión: Interfaz intuitiva para la gestión de casos, visualización de datos y generación de reportes personalizados.
+- Sistema de control de gestión de casos con CRON para notificaciones automáticas a equipos de salud y autoridades sanitarias sobre casos críticos o emergencias.
+`,
+
+      demo_url: "https://adened.minsal.cl/",
+      order: 6,
+      is_main: false,
+      technologies: [
+        { id: 1, name: "CakePhp" },
+        { id: 2, name: "TailwindCSS" },
+        { id: 3, name: "Postgres" },
+        { id: 4, name: "Docker" },
+      ],
+      image: [
+        {
+          id: 4,
+          url: "/images/projects/adened/adened1.png",
+          alternativeText: "Adened - Vista principal",
+        },
+      ],
+    },
+    {
+      id: 7,
+      documentId: "dgmn",
+      title: "DGMN (Dirección general de movilización nacional)",
+      exerpt:
+        "Sitio y subsitios integrados desarrollados en wordpress para la DGMN (Dirección general de movilización nacional) del Ministerio de Defensa de Chile.",
+      description: `Sitio y subsitios integrados desarrollados en wordpress para la DGMN (Dirección general de movilización nacional) del Ministerio de Defensa de Chile.
+
+## Funcionalidades
+- Creación de sitio principal con los siguientes subsitios por temática.
+  - Subsitio de Leyes de Armas y explosivos.
+  - Subsitio de Leyes de Artes Marciales.
+  - Subsitio de Leyes de Armas Químicas y Tóxicas.
+  - Subsitio de Preliminares.
+  - Subsitio de Servicio Militar.
+
+
+`,
+      demo_url: "https://dgmn.cl/",
+      // code_url: "https://github.com/ejemplo/portfolio",
+      order: 7,
+      is_main: false,
+      technologies: [
+        { id: 1, name: "Wordpress" },
+        { id: 2, name: "Elementor" },
+        { id: 3, name: "Docker" },
+      ],
+      image: [
+        {
+          id: 1,
+          url: "/images/projects/dgmn/dgmn1.png",
+          alternativeText: "DGMN - Vista principal",
+        },
+        {
+          id: 2,
+          url: "/images/projects/dgmn/dgmn1.gif",
+          alternativeText: "DGMN - Vista Principal",
+        },
+        {
+          id: 3,
+          url: "/images/projects/dgmn/dgmn2.gif",
+          alternativeText: "DGMN -Ley de armas y explosivos",
+        },
+        {
+          id: 4,
+          url: "/images/projects/dgmn/dgmn3.gif",
+          alternativeText: "DGMN - Leyes de Artes Marciales",
+        },
+        {
+          id: 5,
+          url: "/images/projects/dgmn/dgmn4.gif",
+          alternativeText: "DGMN - Subsitio de Preliminares",
+        },
+        {
+          id: 6,
+          url: "/images/projects/dgmn/dgmn5.gif",
+          alternativeText: "DGMN - Subsitio de Servicio Militar",
+        },
+        {
+          id: 7,
+          url: "/images/projects/dgmn/dgmn6.gif",
+          alternativeText: "DGMN - Vista sexta",
+        },
+      ],
+    },
+    {
+      id: 8,
+      documentId: "lobarnechea-imagenes",
+      title: "Lobarnechea en Imágenes",
+      exerpt:
+        "Sitio web desarrollado para la  Corporación Cultural de Lobarnechea con imágenes históricas de la comuna como parte del proyecto cultural del municipio.",
+      description: `Sitio web desarrollado para la **Corporación Cultural de Lobarnechea** con imágenes históricas de la comuna como parte del proyecto cultural del municipio.
+
+## Funcionalidades
+- Sitio web con galería de imágenes históricas de la comuna de Lobarnechea.
+- creación de backend personalizado para CMS para la gestión de imágenes, categorías y etiquetas.
+- RBAC para gestión de usuarios y permisos de edición.
+- Sistema ETL para migrar imágenes y datos desde sistemas legados a la nueva plataforma.
+- Integración de Sistema de recomendación temática de imágenes basado en etiquetas y categorías para mejorar la experiencia de navegación de los usuarios.
+
+`,
+      demo_url: "https://lobarnecheaenimagenes.cl/",
+      order: 8,
+      is_main: false,
+      technologies: [
+        { id: 1, name: "React" },
+        { id: 2, name: "TypeScript" },
+        { id: 3, name: "TailwindCSS" },
+        { id: 4, name: "NestJS" },
+        { id: 5, name: "Docker" },
+      ],
+      image: [
+        {
+          id: 1,
+          url: "/images/projects/cclb/cclb1.png",
+          alternativeText: "Lobarnechea en Imágenes - Vista principal",
+        },
+        {
+          id: 2,
+          url: "/images/projects/cclb/cclb1.gif",
+          alternativeText: "Lobarnechea en Imágenes - demo",
+        },
+      ],
+    },
+    {
+      id: 9,
+      documentId: "municipalidad-illapel",
+      title: "Municipalidad de Illapel",
+      exerpt:
+        "Sitio Web de la Municipalidad de Illapel realizado en WordPress.",
+      description: `Sitio Web de la Municipalidad de Illapel desarrollado en WordPress, ofreciendo información y servicios en línea para los ciudadanos.
+
+## Funcionalidades
+- Gestión de contenido: Administración de noticias, eventos y comunicados oficiales.
+- Integración con sistemas municipales: Conexión con bases de datos y servicios internos para mostrar información actualizada.
+`,
+      demo_url: "https://municipalidadillapel.cl/",
+      // code_url: "https://github.com/ejemplo/portfolio",
+      order: 9,
+      is_main: false,
+      technologies: [
+        { id: 1, name: "WordPress" },
+        { id: 2, name: "PHP" },
+        { id: 3, name: "MySQL" },
+        { id: 4, name: "HTML" },
+        { id: 5, name: "CSS" },
+        { id: 6, name: "Docker" },
+        { id: 7, name: "Elementor" },
+      ],
+      image: [
+        {
+          id: 1,
+          url: "/images/projects/illapel/illapel1.png",
+          alternativeText: "Municipalidad de Illapel - Vista principal",
+        },
+        {
+          id: 2,
+          url: "/images/projects/illapel/illapel1.gif",
+          alternativeText: "Municipalidad de Illapel - demo",
         },
       ],
     },
