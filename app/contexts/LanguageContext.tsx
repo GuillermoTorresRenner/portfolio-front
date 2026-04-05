@@ -25,7 +25,7 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  const [currentLanguage, setCurrentLanguage] = useState<Language>("es");
+  const [currentLanguage, setCurrentLanguage] = useState<Language>("en");
 
   useEffect(() => {
     const saved = localStorage.getItem("portfolio-language") as Language | null;
