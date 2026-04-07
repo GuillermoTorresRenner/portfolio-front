@@ -230,7 +230,6 @@ From Temuco, Chile, I develop solutions for local and international clients, wit
 - Real-time traceability: Monitoring of shipment status from departure to arrival, with automatic notifications on status changes or incidents.
 - Management dashboard: Intuitive interface for shipment management, data visualization and custom report generation.`,
       demo_url: "https://theus.lanek.cloud/",
-      code_url: "https://github.com/ejemplo/portfolio",
       order: 3,
       is_main: true,
       technologies: [
@@ -242,8 +241,13 @@ From Temuco, Chile, I develop solutions for local and international clients, wit
       image: [
         {
           id: 1,
-          url: "/images/projects/portfolio-hero.png",
-          alternativeText: "Portfolio - Main view",
+          url: "/images/projects/theus/theus1.png",
+          alternativeText: "Theus - Main view",
+        },
+        {
+          id: 2,
+          url: "/images/projects/theus/theus1.gif",
+          alternativeText: "Theus - Dashboard",
         },
       ],
     },
@@ -466,8 +470,7 @@ From Temuco, Chile, I develop solutions for local and international clients, wit
       id: 9,
       documentId: "municipalidad-illapel",
       title: "Municipality of Illapel",
-      exerpt:
-        "Website for the Municipality of Illapel built in WordPress.",
+      exerpt: "Website for the Municipality of Illapel built in WordPress.",
       description: `Website for the Municipality of Illapel developed in WordPress, offering information and online services for citizens.
 
 ## Features

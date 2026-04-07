@@ -243,8 +243,13 @@ Desde Temuco, Chile, desarrollo soluciones para clientes locales e internacional
       image: [
         {
           id: 1,
-          url: "/images/projects/portfolio-hero.png",
-          alternativeText: "Portfolio - Vista principal",
+          url: "/images/projects/theus/theus1.png",
+          alternativeText: "Theus - Vista principal",
+        },
+        {
+          id: 2,
+          url: "/images/projects/theus/theus1.gif",
+          alternativeText: "Theus - Dashboard",
         },
       ],
     },
