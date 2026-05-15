@@ -136,6 +136,51 @@ From Temuco, Chile, I develop solutions for local and international clients, wit
 
   projects: [
     {
+      id: 10,
+      documentId: "distop-ia",
+      title: "Distop-IA VTT (Vampire: The Masquerade)",
+      exerpt:
+        "Open source Virtual Tabletop (VTT) for playing Vampire: The Masquerade (V20). Personal open source project under GPL-3.0 license.",
+      description: `**Distop-IA VTT** is a free and open source Virtual Tabletop for playing **Vampire: The Masquerade (V20 / World of Darkness)**. Structurally inspired by *nivel20.com*, but tailor-made for the VtM line. It is my first personal project released as free software under the **GPL-3.0** license.
+
+## Main features
+
+- **Full authentication**: register, login, password recovery with HTTP-only cookies (accessToken 15m + refreshToken 7d) and transparent refresh.
+- **Chronicles**: tabletop CRUD with email invitation system (for both existing and unregistered users) using themed HTML templates.
+- **V20 character sheet** with five tabs (Traits, Advantages, Status & Health, Equipment, Notes). Supports PCs, NPCs and Antagonists with templates from the manual.
+- **Canon V20 catalogs**: clans, archetypes, disciplines, merits/flaws, weapons and armor from the manual + per-user customs.
+- **Journal, Social and Virtual Table**: under active development.
+- **VtM aesthetics**: blood-red palette in oklch, Cinzel (headings) and Cormorant Garamond (serif) typefaces, dark mode by default.
+
+## Architecture
+
+- **Frontend**: React Router 7 with SSR, Tailwind CSS v4, shadcn/ui, axios, zustand.
+- **Backend**: NestJS 11 + Prisma 7 + PostgreSQL 17. JWT in HTTP-only cookies, transactional mailing with handlebars.
+- **Deployment**: CI/CD to a Hostinger VPS via GitHub Actions; nginx-proxy-manager with internal Docker network (the backend is never exposed to the outside world).
+- **Open source**: two independent GitHub repos (frontend and backend), GPL-3.0 license, PRs welcome against the \`QA\` branch.`,
+      demo_url: "https://distop-ia.com",
+      code_url: "https://github.com/GuillermoTorresRenner/Distop-IA-front",
+      order: 0,
+      is_main: true,
+      technologies: [
+        { id: 1, name: "React" },
+        { id: 2, name: "TypeScript" },
+        { id: 3, name: "React Router 7" },
+        { id: 4, name: "NestJS" },
+        { id: 5, name: "Prisma" },
+        { id: 6, name: "PostgreSQL" },
+        { id: 7, name: "TailwindCSS" },
+        { id: 8, name: "Docker" },
+      ],
+      image: [
+        {
+          id: 1,
+          url: "/images/projects/distop-ia/distop-ia1.png",
+          alternativeText: "Distop-IA VTT - User sanctuary",
+        },
+      ],
+    },
+    {
       id: 1,
       documentId: "otaria",
       title: "Otaria",
